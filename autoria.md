@@ -1,4 +1,5 @@
 # Declaración de autoría — Obligatorio 1
+**Integrantes:** Pia Gutierrez (359147), Francisco Lino (347691)
 
 > **Instrucciones** (borrar esta sección antes de entregar): declarar para cada ejercicio
 > las fuentes utilizadas: código discutido o desarrollado en clase, recursos web (con URL)
@@ -8,7 +9,7 @@
 > con comentarios en el código fuente. La omisión de fuentes puede considerarse plagio.
 
 ## Ejercicio 1
-- Implementación íntegramente propia, sin fuentes externas.
+- Se implemento con lo hecho en clase de AVL.
 
 ## Ejercicio 2
 - Implementación íntegramente propia, sin fuentes externas.

@@ -1,5 +1,5 @@
 # Justificación de órdenes — Obligatorio 1
-
+**Integrantes:** Pia Gutierrez (359147), Francisco Lino (347691)
 > **Instrucciones** (borrar esta sección antes de entregar): para cada ejercicio cuya
 > letra plantea restricciones de órdenes (tiempo o espacio), justificar brevemente por
 > qué la solución cumple, indicando qué estructuras de datos o algoritmos se utilizaron.
