@@ -114,27 +114,27 @@ private:
         return r;
     }
 
-    void search(node *n, T data){
+    void search2(node *n, T data){
         if(n == nullptr){
             std::cout << "no" << std::endl;
             return;
         }
         if(n->data < data) {
-            search(n->right);
+            search2(n->right, data);
         } else if (n->data > data){
-        search(n->left);
+        search2(n->left, data);
         } else {
             std::cout << "si" << std::endl;
         }
     }
-    void range(node *n, T from, T upto) {
+    void range2(node *n, T from, T upto) {
         if (n == nullptr) return;
         if((n->data <= upto) && (n->data >= from)) {
             std::cout << n->data << std::endl;
         } else if (n->data > upto){
-            range(n->left);
+            range2(n->left, from, upto);
         } else {
-            range(n->right);
+            range2(n->right, from, upto);
         }
     }
 
@@ -145,6 +145,6 @@ public:
     }
     virtual int size() override { assert(false); }
     virtual void remove(T data) override { assert(false); };
-    virtual void range(T from, T upto) override { range(this->root, from, upto); };
-    virtual void search(T data) override { search(this->root, data); };
+    virtual void range(T from, T upto) override { range2(this->root, from, upto); };
+    virtual void search(T data) override { search2(this->root, data); };
 };

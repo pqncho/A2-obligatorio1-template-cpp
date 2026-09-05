@@ -12,6 +12,8 @@
 ## 2026-09-05 — En conjunto 
 - Comenzamos leyendo la letra del ej.1. Investigamos la libreria string para utilizar funciones utiles para poder dividir y leer el input.
 - Modificamos el AVL y BST que habiamos hecho en clase para agregar las funciones especificas al ejercicio.
+- Al momento de correr las pruebas nos saltaron errores ya que definimos el tipo de nuestro avl como int, pero los datos de entrada eran mayores que los que abarca el int, por lo que cambiamos el tipo a long long, ahi si compilo correctamente pero solamente se escribieron 3 de los 5 datos esperados de los datos de llegada.
+- Utilizamos IA para entender los errores que nos aparecio en la terminal luego de intentar compilar 
 
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
