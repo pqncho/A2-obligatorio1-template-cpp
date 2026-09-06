@@ -130,7 +130,9 @@ private:
     void range2(node *n, T from, T upto) {
         if (n == nullptr) return;
         if((n->data <= upto) && (n->data >= from)) {
+            range2(n->left, from, upto);
             std::cout << n->data << std::endl;
+            range2(n->right, from, upto);
         } else if (n->data > upto){
             range2(n->left, from, upto);
         } else {

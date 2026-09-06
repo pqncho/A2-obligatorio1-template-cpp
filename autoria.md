@@ -9,7 +9,7 @@
 > con comentarios en el código fuente. La omisión de fuentes puede considerarse plagio.
 
 ## Ejercicio 1
-- Se implemento con lo hecho en clase de AVL.
+- Se implementó con lo hecho en clase de AVL, modificando algunas funciones que no eran relevantes al ejercicio y agregando las propias.
 
 ## Ejercicio 2
 - Implementación íntegramente propia, sin fuentes externas.

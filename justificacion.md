@@ -8,7 +8,8 @@
 > restricciones de órdenes, indicarlo.
 
 ## Ejercicio 1
-- Sin restricciones de órdenes. / Justificación: ...
+- ALTA y BUSCAR O(log K). / Justificación: dado que los árboles son AVL, y tanto busqueda como alta hacen recorridos binarios (solo al nodo mayor o solo al nodo menor) el orden queda logarítmico.
+- RANGO O(log K mas R). / Justificación: fuera del intervalo que se pide, la funcion range2 sigue la misma lógica que add y search2. La diferencia es que si un dato pertenece al intervalo pedido, se chequearán ambos hijos (derecho e izquierdo) para ver si también se deben mostrar en consola.
 
 ## Ejercicio 2
 - Sin restricciones de órdenes. / Justificación: ...
