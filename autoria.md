@@ -12,7 +12,9 @@
 - Se implementó con lo hecho en clase de AVL, modificando algunas funciones que no eran relevantes al ejercicio y agregando las propias.
 
 ## Ejercicio 2
-- Implementación íntegramente propia, sin fuentes externas.
+- Fuentes externas: 
+[String Hashing: Algorithms for Competitive Programming] (https://cp-algorithms.com/string/string-hashing.html)
+- Se extrajo el codigo de la funcion de hash y se modifico para incorporar lo que se le ocurrio al equipo que funcionaria mejor para este ejercicio.
 
 ## Ejercicio 3
 - Implementación íntegramente propia, sin fuentes externas.
