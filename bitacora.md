@@ -23,3 +23,4 @@
 ## 2026-09-08 — En conjunto
 - Consultamos con el profe sobre la estructura del HashTable y los ordenes de la funcion de hash.
 - Cambiamos la implementacion de nuestras clases para que sean abstractas, y comenzamos con "ejercicio2.cpp"
+- Implementamos las funciones necesarias para resolver el ejercicio, basándonos en lo dado en clase de hash table.

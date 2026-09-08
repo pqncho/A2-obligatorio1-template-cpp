@@ -17,7 +17,7 @@
 - Se extrajo el codigo de la funcion de hash y se modifico para incorporar lo que se le ocurrio al equipo que funcionaria mejor para este ejercicio.
 
 ## Ejercicio 3
-- Implementación íntegramente propia, sin fuentes externas.
+- Implementación íntegramente propia, .
 
 ## Ejercicio 4
 - Implementación íntegramente propia, sin fuentes externas.

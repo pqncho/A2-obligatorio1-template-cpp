@@ -18,7 +18,14 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
 
         virtual void set2(List<V> **arrBuckets, V word){
             int hs = this->h->hash(word)%(this->cap);
+            if(arrBuckets[hs]->isEmpty()) this->filled++;
             arrBuckets[hs]->insert(word);
+            if(arrBuckets[hs]->getSize() > this->maxBox) this->maxBox = arrBuckets[hs]->getSize();
+        }
+
+        virtual int get2(List<V> **arrBuckets, V value){
+            int hs = this->h->hash(value)%(this->cap);
+            return arrBuckets[hs]->getSize();
         }
 
     public:
@@ -31,6 +38,7 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
         this->filled = 0;
     }
         virtual void set(V value) override { set2(this->arrBuckets, value); };
-        virtual V get(K key) override { assert(false); }
-        virtual bool exists(K key) override { assert(false); }
+        virtual int get(V value) override { return get2(this->arrBuckets, value); }
+        virtual int getMaxBox() override { return this->maxBox; }
+        virtual int getFilledBoxes() override { return this->filled; }
 };

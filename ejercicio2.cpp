@@ -19,7 +19,7 @@ int main()
     for (int i = 0; i < n; i++) {
         string ans;
         getline(cin,ans);
-
+        cajones->set(ans);
     }
     //consultas
     cin >> n;
@@ -27,7 +27,8 @@ int main()
     for (int i = 0; i < n; i++) {
         string ans;
         getline(cin,ans);
-
+        cout << cajones->get(ans) << endl;
     }
+    cout << cajones->getFilledBoxes() << " " << cajones->getMaxBox() << endl;
     return 0;
 }
