@@ -14,7 +14,7 @@ int main()
     int n;
     cin >> n;
     cin.ignore();
-    Table *cajones = new OpenHashTable(n);
+    //table<int, std::string> *cajones = new OpenHashTable(n);
     for (int i = 0; i < n; i++) {
         string ans;
         getline(cin,ans);

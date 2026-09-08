@@ -1,11 +1,10 @@
 #pragma once
 
-#include <string>
 
-class Table {
+template <class K, class V> class table {
 public:
-    virtual void set(std::string value) = 0;
-    virtual std::string get(int key) = 0;
-    virtual bool exists(int key) = 0;
+    virtual void set(V value) = 0;
+    virtual V get(K key) = 0;
+    virtual bool exists(K key) = 0;
 
 };

@@ -2,57 +2,35 @@
 
 #include <cassert>
 #include "table.cpp"
+#include "hash_func.cpp"
 #include "List.h"
 
-class OpenHashTable: public Table {
+template <class K, class V> class OpenHashTable: public table <K, V> {
     private:
-        List<std::string> **arrBuckets = nullptr;
-        int cap = 0;
-        int elems = 0;
+        List<V> **arrBuckets = nullptr;
+        int cap;
+        int elems;
+        int maxBox;
+        int filled;
+        hashFunc<K> *h;
+        float fc;
+    
 
-        std::string ordenALfabetico(std::string s) {
-            int* letters = new int[26]();
-            for (char c : s) {
-                letters[c - 'a']++;
-            }
-
-            std::string ordered = "";
-            for (int i = 0; i < 26; i++) {
-                while(letters[i] > 0) {
-                    ordered += (char)('a' + i);
-                    letters[i]--;
-                }
-            }
-            return ordered;
-        }
-
-        int hash(std::string word) {
-            word = ordenALfabetico(word);
-            int p = 7;
-            int m = 1e9 + 9;
-            long long hash_value = 0;
-            long long pow = 1;
-
-            for (char c : word) {
-                hash_value = (hash_value + (c - 'a' + 1)*pow)%m;
-                pow = (pow * p)%m;
-            }
-            
-            return hash_value;
-        }
-
-        virtual void set2(List<std::string> **arrBuckets, std::string word){
-            int h = hash(word)%(this->cap);
-            arrBuckets[h]->insert(word);
+        virtual void set2(List<V> **arrBuckets, V word){
+            //int h = hash(word)%(this->cap);
+            //arrBuckets[h]->insert(word);
         }
 
     public:
-        OpenHashTable(int cap) {
-        this->arrBuckets = new List<std::string> *[cap];
+        OpenHashTable(int cap, hashFunc<K> *h) {
+        this->arrBuckets = new List<V> *[cap * (3/2)];
         this->elems = 0;
-        this->cap = cap;
+        this->cap = cap * (3/2);
+        this->fc = 0.0;
+        this->maxBox = 0;
+        this->filled = 0;
     }
-        virtual void set(std::string value) override { set2(this->arrBuckets, value); };
-        virtual std::string get(int key) override { assert(false); }
-        virtual bool exists(int key) override { assert(false); }
+        virtual void set(V value) override { set2(this->arrBuckets, value); };
+        virtual V get(K key) override { assert(false); }
+        virtual bool exists(K key) override { assert(false); }
 };

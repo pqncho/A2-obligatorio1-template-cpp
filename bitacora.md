@@ -19,3 +19,7 @@
 - Pía: Corregí el error de range2()
 - Leimos el ejercicio 2 y comenzamos a tirar ideas de como implementar el hash. Pensamos para la clave crear un array de 26 posiciones y sumar las apariciones de cada letra y ademas su posicion en el array para que hubieran menos colisiones. Igual nos parecio que surgirian muchas colisiones por lo que investigamos funcines de Hash con strings. Luego de esto, combinamos la 'polynomial rolling hash function' con nuestra version de los arrays, para que a palabras con misma cantidad de letras iguales, devuelva la misma clave del array.
 - Comenzamos armando el hash abierto, el constructor y la funcion de set(). También arrancamos con la función main() para leer las primeras lineas y crear la tabla.
+
+## 2026-09-08 — En conjunto
+- Consultamos con el profe sobre la estructura del HashTable y los ordenes de la funcion de hash.
+- Cambiamos la implementacion de nuestras clases para que sean abstractas, y comenzamos con "ejercicio2.cpp"
