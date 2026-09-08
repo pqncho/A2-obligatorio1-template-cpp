@@ -3,7 +3,7 @@
 #include "hash_func.cpp"
 #include <string>
 
-class stringhash : public hashFunc<std::string> {
+class stringHash : public hashFunc<std::string> {
 public:
     std::string ordenALfabetico(std::string s) {
         int* letters = new int[26]();

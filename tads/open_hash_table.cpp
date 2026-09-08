@@ -17,8 +17,8 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
     
 
         virtual void set2(List<V> **arrBuckets, V word){
-            //int h = hash(word)%(this->cap);
-            //arrBuckets[h]->insert(word);
+            int hs = this->h->hash(word)%(this->cap);
+            arrBuckets[hs]->insert(word);
         }
 
     public:

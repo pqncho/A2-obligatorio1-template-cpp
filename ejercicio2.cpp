@@ -3,6 +3,7 @@
 #include <iostream>
 //#include <limits>
 
+#include "tads/hash_string_func.cpp"
 #include "tads/table.cpp"
 #include "tads/open_hash_table.cpp"
 
@@ -14,7 +15,7 @@ int main()
     int n;
     cin >> n;
     cin.ignore();
-    //table<int, std::string> *cajones = new OpenHashTable(n);
+    table<string, string> *cajones = new OpenHashTable<string, string>(n, new stringHash());
     for (int i = 0; i < n; i++) {
         string ans;
         getline(cin,ans);
