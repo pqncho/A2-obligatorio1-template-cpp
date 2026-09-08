@@ -16,9 +16,10 @@ int main()
     cin >> n;
     cin.ignore();
     table<string, string> *cajones = new OpenHashTable<string, string>(n, new stringHash());
+    cout << "se creo el array" << endl;
     for (int i = 0; i < n; i++) {
         string ans;
-        getline(cin,ans);
+        cin >> ans;
         cajones->set(ans);
     }
     //consultas
@@ -26,7 +27,7 @@ int main()
     cin.ignore();
     for (int i = 0; i < n; i++) {
         string ans;
-        getline(cin,ans);
+        cin >> ans;
         cout << cajones->get(ans) << endl;
     }
     cout << cajones->getFilledBoxes() << " " << cajones->getMaxBox() << endl;
