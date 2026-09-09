@@ -24,3 +24,7 @@
 - Consultamos con el profe sobre la estructura del HashTable y los ordenes de la funcion de hash.
 - Cambiamos la implementacion de nuestras clases para que sean abstractas, y comenzamos con "ejercicio2.cpp"
 - Implementamos las funciones necesarias para resolver el ejercicio, basándonos en lo dado en clase de hash table.
+
+## 2026-09-09 — En conjunto
+- Corrimos tests más grandes para el ejercicio1, y pasaron las pruebas.
+- Leimos el ejercicio3 y comenzamos con la implementación del minHeap. Pensamos mantener una variable en la estructura para llevar la cuenta del costo de los archivos. Faltaría implementar siftDown() y remove() para luego hacer consolidate(), que seleccione la cabeza del minHeap y su hijo más chico para sumarlos en un nodo ¨archivo¨ y reingresarlo al heap, borrando los dos que lo componen.
