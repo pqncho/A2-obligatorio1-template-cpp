@@ -8,7 +8,7 @@ template <class T> class minHeap : public heap<T> {
         T* arr;
         int arrLength;
         int ix;
-        int weight;
+        long long weight;
 
         void swap(int posA, int posB) {
             T aux = this->arr[posA];

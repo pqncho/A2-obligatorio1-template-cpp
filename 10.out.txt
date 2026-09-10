@@ -1,1 +1,7 @@
 se creo el array
+entro al for
+llega al hash
+pasa letters(odena palabra)
+palabra ordenada cdeghjjklnopquvxy
+hs es: 2
+el cap es: 15

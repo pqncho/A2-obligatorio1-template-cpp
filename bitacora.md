@@ -24,7 +24,21 @@
 - Consultamos con el profe sobre la estructura del HashTable y los ordenes de la funcion de hash.
 - Cambiamos la implementacion de nuestras clases para que sean abstractas, y comenzamos con "ejercicio2.cpp"
 - Implementamos las funciones necesarias para resolver el ejercicio, basándonos en lo dado en clase de hash table.
+- Corrimos la primer prueba pero no imprime nada y da segmentation fault, cambiamos algunas cosas del constructor para ver si imprime algo y pusimos un cout luego de la creación de la tabla que ahora si sale en el out, por lo que el problema está en otro lado.
 
 ## 2026-09-09 — En conjunto
 - Corrimos tests más grandes para el ejercicio1, y pasaron las pruebas.
 - Leimos el ejercicio3 y comenzamos con la implementación del minHeap. Pensamos mantener una variable en la estructura para llevar la cuenta del costo de los archivos. Faltaría implementar siftDown() y remove() para luego hacer consolidate(), que seleccione la cabeza del minHeap y su hijo más chico para sumarlos en un nodo ¨archivo¨ y reingresarlo al heap, borrando los dos que lo componen.
+
+## 2026-09-10 — Pia
+- Seguí el consejo del profe y agregué couts en varias partes del código del ejercicio2 para intentar ver el error. La tabla cajones se crea bien y el hash recorre y ordena la palabra correctamente. Tambien verifiqué que hs sea menor a cap. Es raro porque lo único que hay después en la función son llamadas a las funciones de lista que se nos dieron o incrementar el valor de una variable. Hasta ahora muestra esto:
+
+se creo el array
+entro al for
+llega al hash
+pasa letters(odena palabra)
+palabra ordenada cdeghjjklnopquvxy
+hs es: 2
+el cap es: 15
+
+después lo seguimos con Fran.

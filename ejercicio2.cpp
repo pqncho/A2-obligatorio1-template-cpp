@@ -20,7 +20,9 @@ int main()
     for (int i = 0; i < n; i++) {
         string ans;
         cin >> ans;
+        cout << "entro al for" << endl;
         cajones->set(ans);
+        cout << "se agrego una palabra" << endl;
     }
     //consultas
     cin >> n;
