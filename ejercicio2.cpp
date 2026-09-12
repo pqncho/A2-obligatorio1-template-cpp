@@ -16,13 +16,10 @@ int main()
     cin >> n;
     cin.ignore();
     table<string, string> *cajones = new OpenHashTable<string, string>(n, new stringHash());
-    cout << "se creo el array" << endl;
     for (int i = 0; i < n; i++) {
         string ans;
         cin >> ans;
-        cout << "entro al for" << endl;
         cajones->set(ans);
-        cout << "se agrego una palabra" << endl;
     }
     //consultas
     cin >> n;

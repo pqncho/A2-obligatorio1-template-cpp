@@ -11,7 +11,6 @@ public:
         for (int i = 0; i < s.length(); i++) {
             letters[s[i] - 'a']++;
         }
-        std::cout << "pasa letters(odena palabra)" << std::endl;
 
         std::string ordered = "";
         for (int i = 0; i < 26; i++) {
@@ -20,12 +19,10 @@ public:
                 letters[i]--;
             }
         }
-        std::cout << "palabra ordenada " << ordered << std::endl;
         return ordered;
     }
 
     virtual int hash(std::string word) override {
-        std::cout << "llega al hash" << std::endl;
         word = ordenALfabetico(word);
         int p = 7;
         int m = 1e9 + 9;

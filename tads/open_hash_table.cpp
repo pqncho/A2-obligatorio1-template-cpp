@@ -6,6 +6,7 @@
 #include "table.cpp"
 #include "hash_func.cpp"
 #include "List.h"
+#include "ListImp.cpp"
 
 template <class K, class V> class OpenHashTable: public table <K, V> {
     private:
@@ -20,8 +21,6 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
 
         virtual void set2(List<V> **arrBuckets, V word){
             int hs = hacerPositivo((this->h->hash(word)))%(this->cap);
-            std::cout << "hs es: " << hs << std::endl;
-            std::cout << "el cap es: " << this->cap << std::endl;
             if (arrBuckets[hs]->isEmpty()) this->filled++;
             arrBuckets[hs]->insert(word);
             if (arrBuckets[hs]->getSize() > this->maxBox) {
@@ -36,9 +35,13 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
 
     public:
         OpenHashTable(int cap, hashFunc<K> *h) {
-        this->arrBuckets = new List<V> *[(cap * 3)/2]();
+        this->cap = (cap*3)/2;
+        this->arrBuckets = new List<V> *[(cap*3)/2];
+        if(this->cap <=0) this->cap=1;
+        for(int i=0; i<this->cap;i++){
+            this->arrBuckets[i] = new ListImp<V>();
+        }
         this->elems = 0;
-        this->cap = (cap * 3)/2;
         this->maxBox = 0;
         this->filled = 0;
         this->h = h;

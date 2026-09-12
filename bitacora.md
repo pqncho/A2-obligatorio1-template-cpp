@@ -42,3 +42,6 @@ hs es: 2
 el cap es: 15
 
 después lo seguimos con Fran.
+
+## 2026-09-12 - Francisco
+- investigando las partes del codigo y consultando con ChatGPT me di cuenta que el problema estaba en el constructor de la open hash table, al momento de crear la tabla dejabamos todos los indices en null, por lo que esto generaba fallas al momento de querer insertar elementos en la lista de ese indice, por lo que por separado cree el array de punteros List, y luego llenaba todas las posiciones por medio de un for con ListImp.  
