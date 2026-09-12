@@ -18,6 +18,7 @@ int main()
         cin >> ans;
         archivos->push(ans);
     }
+
     archivos->consolidate();
     cout << archivos->getWeight() << endl;
     return 0;

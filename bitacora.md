@@ -51,3 +51,4 @@ después lo seguimos con Fran.
 ## 2026-09-12 - En conjunto
 - Estuvimos mirando el ejercicio2 para ver como resolver el tema de palabras distintas colisionando en el mismo bucket, pero los cambios que hacíamos no mejoraban el out, así que lo dejamos para la semana que viene preguntarle al profe.
 - Implementamos las funciones que faltaban (siftDown, remove y consolidate) y completamos el archivo cpp con el for y el cout.
+- compilamos el programa y las salidas nos dieron diferente con las que estan en las pruebas. Sospechamos que el error esta en siftDown pero aun no logramos detectarlo.
