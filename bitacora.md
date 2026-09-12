@@ -46,6 +46,8 @@ después lo seguimos con Fran.
 ## 2026-09-12 - Francisco
 - investigando las partes del codigo y consultando con ChatGPT me di cuenta que el problema estaba en el constructor de la open hash table, al momento de crear la tabla dejabamos todos los indices en null, por lo que al momento de insertar un elemento, el programa accedia a un puntero nulo que generaba el segmentation fault. Por lo que por separado cree el array de punteros List, y luego llenaba todas las posiciones por medio de un for con ListImp para que no quedara ningun indice en nulo. 
 
-- Luego de volver a ejecutar el programa, este compilaba, pero ahora fallaban algunos de los outputs, por lo que me puse a investigar y vi que en la parte de crear el get2 (el que devuelve la cantidad de tipos en un bucket) estabamos retornando directamente el size de la lista, y esto genera errores ya que no estamos teniendo en cuenta las colisiones, Luego con Pia lo correjiremos.
+- Luego de volver a ejecutar el programa, este compilaba, pero ahora fallaban algunos de los outputs, por lo que me puse a investigar y vi que en la parte de crear el get2 (el que devuelve la cantidad de tipos en un bucket) estabamos retornando directamente el size de la lista, y esto genera errores ya que no estamos teniendo en cuenta las colisiones, luego con Pia lo correjiremos.
 
 ## 2026-09-12 - En conjunto
+- Estuvimos mirando el ejercicio2 para ver como resolver el tema de palabras distintas colisionando en el mismo bucket, pero los cambios que hacíamos no mejoraban el out, así que lo dejamos para la semana que viene preguntarle al profe.
+- Implementamos las funciones que faltaban (siftDown, remove y consolidate) y completamos el archivo cpp con el for y el cout.
