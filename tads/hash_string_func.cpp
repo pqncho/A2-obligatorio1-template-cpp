@@ -1,30 +1,13 @@
 #pragma once
 
 #include "hash_func.cpp"
-#include <iostream>
 #include <string>
 
 class stringHash : public hashFunc<std::string> {
 public:
-    std::string ordenALfabetico(std::string s) {
-        int* letters = new int[26]();
-        for (int i = 0; i < s.length(); i++) {
-            letters[s[i] - 'a']++;
-        }
-
-        std::string ordered = "";
-        for (int i = 0; i < 26; i++) {
-            while(letters[i] > 0) {
-                ordered += (char)('a' + i);
-                letters[i]--;
-            }
-        }
-        return ordered;
-    }
 
     virtual int hash(std::string word) override {
-        word = ordenALfabetico(word);
-        int p = 7;
+        int p = 31;
         int m = 1e9 + 9;
         long long hash_value = 0;
         long long pow = 1;
