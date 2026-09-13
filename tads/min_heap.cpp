@@ -74,17 +74,10 @@ template <class T> class minHeap : public heap<T> {
 
         void consolidatee(){
             if(this->ix == 1) return;
-            for(int i=1 ; i<= this->ix ; i++){
-                std::cout << this->arr[i] << std::endl;
-            }
             T min1 = remove();
             T min2 = remove();
-            std::cout << min1 << " este es min1" << std::endl;
-            std::cout << min2 << " este es min2" << std::endl;
             T merge = min1 + min2;
             weight+= merge;
-            std::cout << weight << " este es weigth broder" << std::endl;
-            std::cout << merge << " este es merge bro" << std::endl;
             push(merge);
             consolidatee();
         }
