@@ -52,3 +52,7 @@ después lo seguimos con Fran.
 - Estuvimos mirando el ejercicio2 para ver como resolver el tema de palabras distintas colisionando en el mismo bucket, pero los cambios que hacíamos no mejoraban el out, así que lo dejamos para la semana que viene preguntarle al profe.
 - Implementamos las funciones que faltaban (siftDown, remove y consolidate) y completamos el archivo cpp con el for y el cout.
 - compilamos el programa y las salidas nos dieron diferente con las que estan en las pruebas. Sospechamos que el error esta en siftDown pero aun no logramos detectarlo.
+
+## 2026-09-13 - Francisco
+
+- Luego de volver a leer el codigo de siftDown mas tranquilo y con una foto que pia me mando, en la cual hizo correctamente la funcion en su cuaderno sin mirar lo que teniamos en el codigo, me di cuenta que nuestro principal error era que estabamos intentado tratar todas las restricciones juntas, por lo que al escribir las restricciones que precisabamos y cambiar alguna cosa menor se soluciono el problema y la salida de los inputs quedaron igual que los de las pruebas.

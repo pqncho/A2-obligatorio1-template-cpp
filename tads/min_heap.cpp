@@ -99,8 +99,7 @@ template <class T> class minHeap : public heap<T> {
              
              }
         
-        virtual T top() override { assert(false); }
-        virtual T pop() override { assert(false); }
+       
         virtual void consolidate() override { consolidatee(); }
         virtual int size() override { return this->ix; }
         virtual T getWeight() override {return this->weight; }
