@@ -31,26 +31,37 @@ template <class T> class minHeap : public heap<T> {
         }
 
         void siftDown(int pos) {
-            if(pos == this->ix || pos == this->arrLength) return;
-            if((2*pos)+1 >= this->arrLength) return;
+            if(pos >= this->ix || pos >= this->arrLength) return;
+            if((2*pos) > this->ix) return;
             T leftSon = this->arr[2*pos];
-            T rightSon = this->arr[2*pos + 1];
             T parent = this->arr[pos];
         
-            if(parent > leftSon || parent > rightSon || (2*pos)+1>this->ix){
+            if((pos*2)+1 > this->ix ){
 
-                if(leftSon <= rightSon || (2*pos)+1>this->ix) {
+                if(parent > leftSon) {
+                    swap(pos , pos*2);
+                    siftDown(pos*2);
+                }
+            }else {
+                T rightSon = this->arr[2*pos +1];
+                if(parent > leftSon || parent > rightSon){
+                
+                if(leftSon <= rightSon) {
                     swap(pos, 2*pos);
-                   
                     siftDown(2*pos);
                 } else {
+                    if(rightSon < leftSon){
                     swap(pos, 2*pos + 1);
-                    
                     siftDown(2*pos + 1);
-                    
+                    }
                 }
+            
+
             }
-        }
+
+        }  
+            }
+        
 
         T remove() {
             T data = this->arr[1];
@@ -77,7 +88,7 @@ template <class T> class minHeap : public heap<T> {
             push(merge);
             consolidatee();
         }
-
+    
     
     public:
         minHeap(int size) {
