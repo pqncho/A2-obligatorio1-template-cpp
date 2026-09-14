@@ -12,7 +12,7 @@
 - RANGO O(log K mas R). / Justificación: fuera del intervalo que se pide, la funcion range2 sigue la misma lógica que add y search2. La diferencia es que si un dato pertenece al intervalo pedido, se chequearán ambos hijos (derecho e izquierdo) para ver si también se deben mostrar en consola.
 
 ## Ejercicio 2
-- Sin restricciones de órdenes. / Justificación: ...
+- Orden espacial O(n), orden temporal O(n . log n). / Justificación: El espacial se ve claramente porque el heap se guarda como un array de n+1 posiciones (dado que la pos cero no se utiliza). Interactuamos con el array como si fuera un arbol, por lo tanto nos movemos por "ramas" y de manera logar'itmica, chequeando hijos y padre. Esto lo hacemos (remove()) tantas veces como archivos se ingresaron. Por esto el orden temporal es O(n . log n).
 
 ## Ejercicio 3
 - Sin restricciones de órdenes. / Justificación: ...
