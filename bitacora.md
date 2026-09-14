@@ -55,4 +55,8 @@ después lo seguimos con Fran.
 
 ## 2026-09-13 - Francisco
 
-- Luego de volver a leer el codigo de siftDown mas tranquilo y con una foto que pia me mando, en la cual hizo correctamente la funcion en su cuaderno sin mirar lo que teniamos en el codigo, me di cuenta que nuestro principal error era que estabamos intentado tratar todas las restricciones juntas, por lo que al escribir las restricciones que precisabamos y cambiar alguna cosa menor se soluciono el problema y la salida de los inputs quedaron igual que los de las pruebas.
+- Luego de volver a leer el codigo de siftDown mas tranquilo y con una foto que Pia me mandó, en la cual hizo correctamente la funcion en su cuaderno sin mirar lo que teniamos en el codigo, me di cuenta que nuestro principal error era que estabamos intentado tratar todas las restricciones juntas, por lo que al escribir las restricciones que precisabamos y cambiar alguna cosa menor se soluciono el problema y la salida de los inputs quedaron igual que los de las pruebas.
+
+## 2026-09-14 - En conjunto
+- Comenzamos a leer el ejercicio4, y pensamos armar un minheap que tenga el módulo y su prioridad. También se nos ocurre en la priority queue tener un array de pares aparte, donde guardemos las dependencias para ir chequeando a ver si se puede imprimir. Igualmente hay muchas dudas y no estamos seguros si esta lógica cumpliría los ordenes.
+- Definimos los operadores de igualdad del par según pedía la letra (por prioridad, desempatando por elemento). 

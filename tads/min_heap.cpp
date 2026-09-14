@@ -1,5 +1,5 @@
 #pragma once 
-#include <iostream>
+
 #include <cassert>
 #include "heap.cpp"
 
@@ -40,7 +40,7 @@ template <class T> class minHeap : public heap<T> {
 
                 if(parent > leftSon) {
                     swap(pos , pos*2);
-                    siftDown(pos*2);
+                    siftDown(pos*2); //podria no ir
                 }
             }else {
                 T rightSon = this->arr[2*pos +1];
@@ -91,15 +91,17 @@ template <class T> class minHeap : public heap<T> {
             this->weight = 0;
         }
 
-        virtual void push(T elem) override
-        { 
-             this->ix++;
-             this->arr[this->ix] = elem;
-             siftUp(this->ix);
-             
-             }
+        virtual void push(T elem) override { 
+            this->ix++;
+            this->arr[this->ix] = elem;
+            siftUp(this->ix);    
+        }
         
-       
+        virtual T pop() override { 
+            assert(size() >= 1);
+            return this->arr[1]; 
+        }
+        virtual T top() override { return remove(); }
         virtual void consolidate() override { consolidatee(); }
         virtual int size() override { return this->ix; }
         virtual T getWeight() override {return this->weight; }
