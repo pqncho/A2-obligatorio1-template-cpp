@@ -7,6 +7,16 @@
 
 using namespace std;
 
+void consolidate(heap<long long>* ar){
+    if(ar->size() == 1) return;
+    long long min1 = ar->top();
+    long long min2 = ar->top();
+    long long merge = min1 + min2;
+    ar->setWeight(ar->getWeight() + merge);
+    ar->push(merge);
+    consolidate(ar);
+}
+
 int main()
 {
     int n;
@@ -19,7 +29,7 @@ int main()
         archivos->push(ans);
     }
 
-    archivos->consolidate();
+    consolidate(archivos);
     cout << archivos->getWeight() << endl;
     return 0;
 }

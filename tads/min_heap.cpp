@@ -71,16 +71,6 @@ template <class T> class minHeap : public heap<T> {
             
             return data;
         }
-
-        void consolidatee(){
-            if(this->ix == 1) return;
-            T min1 = remove();
-            T min2 = remove();
-            T merge = min1 + min2;
-            weight+= merge;
-            push(merge);
-            consolidatee();
-        }
     
     
     public:
@@ -102,7 +92,7 @@ template <class T> class minHeap : public heap<T> {
             return this->arr[1]; 
         }
         virtual T top() override { return remove(); }
-        virtual void consolidate() override { consolidatee(); }
         virtual int size() override { return this->ix; }
+        virtual void setWeight(T w) override { this->weight = w; }
         virtual T getWeight() override {return this->weight; }
 };

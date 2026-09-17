@@ -30,7 +30,7 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
                     letters[i]--;
                 }
             }
-            return ordered;
+            return ordered; //moverlo a main 
         }
 
         virtual void set2(List<V> **arrBuckets, V word){
