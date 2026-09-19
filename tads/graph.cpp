@@ -4,7 +4,7 @@
 
 template <class T> class Graph {
 public:
-    virtual list<T> adyacents(T n) = 0;
-    virtual T* entryDegree() = 0;
-    
+    virtual list<T>* adyacents(T n) = 0;
+    virtual int* entryDegree() = 0;
+    virtual bool hasEdge(T v1, T v2) = 0;
 };
