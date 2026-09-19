@@ -67,3 +67,6 @@ después lo seguimos con Fran.
 - También cambié la función ordenAlfabetico() de estar dentro de open_hash_table a estar en ejercicio2.cpp
 - Volví a leer la letra del ejercicio4 ahora que empezamos con grafos, las dependencias serían un grafo implementado como listas de adyacencia. Igualmente me cuesta ver como vamos a conectar el grafo de dependencias con el minHeap. Porque no solo habría que ordenar el heap por prioridad y módulo, sino que también por dependencias. Por ahora solo empecé la clase abstracta graph con adyacents(g) (devuelve lista de vecinos) y entryDegree() (devuelve array con grado según la posición, pos 0 no se usa) que seguro los vamos a necesitar para el algoritmo de orden topológico. Igualmente mañana lo pensamos con Francisco.
 - Más tarde seguí con lo de graph.cpp, agregué hasEdge() que quizás nos sea util, y empecé adyacency_list implementando las funciones de graph. Igual hay que ver si adyacents no devuelve ya el iterador, por ahora hice que devuevla la lista de vecinos.
+
+## 2026-09-19 — Francisco
+- compile y probe la nueva implementacion y resolucion del ejercicio 2 que hizo pia, con la prueba de 1000 inputs y efectivamente devolvio lo que debia devolver, por lo que estamos muy feliz.
