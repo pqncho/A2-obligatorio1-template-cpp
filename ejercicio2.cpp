@@ -9,6 +9,22 @@
 
 using namespace std;
 
+string ordenALfabetico(string s) {
+    int* letters = new int[26]();
+    for (int i = 0; i < s.length(); i++) {
+        letters[s[i] - 'a']++;
+    }
+
+    string ordered = "";
+    for (int i = 0; i < 26; i++) {
+        while(letters[i] > 0) {
+            ordered += (char)('a' + i);
+            letters[i]--;
+        }
+    }
+    return ordered; 
+}
+
 int main()
 {
     //registros
@@ -19,7 +35,7 @@ int main()
     for (int i = 0; i < n; i++) {
         string ans;
         cin >> ans;
-        cajones->set(ans);
+        cajones->set(ordenALfabetico(ans));
     }
     //consultas
     cin >> n;
@@ -27,7 +43,7 @@ int main()
     for (int i = 0; i < n; i++) {
         string ans;
         cin >> ans;
-        cout << cajones->get(ans) << endl;
+        cout << cajones->get(ordenALfabetico(ans)) << endl;
     }
     cout << cajones->getFilledBoxes() << " " << cajones->getMaxBox() << endl;
     return 0;

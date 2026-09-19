@@ -58,5 +58,10 @@ después lo seguimos con Fran.
 - Luego de volver a leer el codigo de siftDown mas tranquilo y con una foto que Pia me mandó, en la cual hizo correctamente la funcion en su cuaderno sin mirar lo que teniamos en el codigo, me di cuenta que nuestro principal error era que estabamos intentado tratar todas las restricciones juntas, por lo que al escribir las restricciones que precisabamos y cambiar alguna cosa menor se soluciono el problema y la salida de los inputs quedaron igual que los de las pruebas.
 
 ## 2026-09-14 - En conjunto
-- Comenzamos a leer el ejercicio4, y pensamos armar un minheap que tenga el módulo y su prioridad. También se nos ocurre en la priority queue tener un array de pares aparte, donde guardemos las dependencias para ir chequeando a ver si se puede imprimir. Igualmente hay muchas dudas y no estamos seguros si esta lógica cumpliría los ordenes.
+- Comenzamos a leer el ejercicio4, y pensamos armar un minheap que tenga el módulo y su prioridad. Igualmente hay muchas dudas y no estamos seguros si esta lógica cumpliría los ordenes, seguramente falte algo de grafos para guardar bien las dependencias.
 - Definimos los operadores de igualdad del par según pedía la letra (por prioridad, desempatando por elemento). 
+
+## 2026-09-19 — Pia
+- Después de hablar con el profe sobre el ejercicio2 el martes, volví a pensar el ejercicio de cero y entendí donde es que nos habíamos confundido, al pensar en un cajón como un bucket de la tabla y no simplemente como un elemento clave-valor. 
+- Por esto, cambié la implementación de listas que usabamos y la implementé desde cero como una lista simplemente enlazada en la que los elementos tienen la cantidad de veces (times) que aparecen, en vez de agregar un elemento a ciegas sin chequear que ya esté. Creo que resuelve nuestro problema de devolver correctamente los cajones, pero deberíamos chequear bien los órdenes.
+- También cambié la función ordenAlfabetico() de estar dentro de open_hash_table a estar en ejercicio2.cpp
