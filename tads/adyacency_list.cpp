@@ -18,6 +18,10 @@ public:
         }
     }
     
+    virtual void addEdge(T v1, T v2) override { // v1 -> v2
+        this->arrAdy[v2]->add(v1);
+    }
+
     virtual list<T>* adyacents(T n) override { 
         if(n >= this->cap || n < 1) return nullptr;
         //devolver directamente el iterador?
@@ -33,6 +37,6 @@ public:
 
     virtual bool hasEdge(T v1, T v2) override {
         if(v1 >= this->cap || v2 >= this->cap) return false;
-        return this->arrAdy[v1]->getTimesBy(v2) != 0;
+        return this->arrAdy[(int)v1]->getTimesBy(v2) != 0;
     } 
 };

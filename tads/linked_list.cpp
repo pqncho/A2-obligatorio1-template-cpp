@@ -69,7 +69,7 @@ public:
         }
     }
 
-    virtual int size() override { return this->count; }
+    virtual int size() override { return this->count; } //cantidad de elems distintos
 
     virtual int getTimesBy(T data) override { return getTimes(this->head, data);}
 };

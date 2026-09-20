@@ -46,21 +46,18 @@ template <class T> class minHeap : public heap<T> {
                 T rightSon = this->arr[2*pos +1];
                 if(parent > leftSon || parent > rightSon){
                 
-                if(leftSon <= rightSon) {
-                    swap(pos, 2*pos);
-                    siftDown(2*pos);
-                } else {
-                    if(rightSon < leftSon){
-                    swap(pos, 2*pos + 1);
-                    siftDown(2*pos + 1);
+                    if(leftSon <= rightSon) {
+                        swap(pos, 2*pos);
+                        siftDown(2*pos);
+                    } else {
+                        if(rightSon < leftSon){
+                            swap(pos, 2*pos + 1);
+                            siftDown(2*pos + 1);
+                        }
                     }
                 }
-            
-
-            }
-
-        }  
-            }
+            }  
+        }
         
 
         T remove() {
@@ -93,6 +90,7 @@ template <class T> class minHeap : public heap<T> {
         }
         virtual T top() override { return remove(); }
         virtual int size() override { return this->ix; }
+        virtual bool isEmpty() override { return this->ix == 0; }
         virtual void setWeight(T w) override { this->weight = w; }
         virtual T getWeight() override {return this->weight; }
 };

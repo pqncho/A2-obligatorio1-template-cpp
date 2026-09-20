@@ -39,10 +39,10 @@ private:
     minHeap<pair> *h; 
 
 public:
-    virtual void push(E elem, P prio) override { assert(false); }
-    virtual E top() override { assert(false); }
-    virtual E pop() override { assert(false); }
-    virtual int size() override { assert(false); }
-    virtual bool isEmpty() override { assert(false); }
+    virtual void push(E elem, P prio) override { this->h->push(pair(elem, prio)); }
+    virtual E top() override { return this->h->top().elem; }
+    virtual E pop() override { return this->h->pop().elem; }
+    virtual int size() override { return this->h->size(); }
+    virtual bool isEmpty() override { return this->h->isEmpty(); }
 
 };

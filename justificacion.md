@@ -12,10 +12,10 @@
 - RANGO O(log K mas R). / Justificación: fuera del intervalo que se pide, la funcion range2 sigue la misma lógica que add y search2. La diferencia es que si un dato pertenece al intervalo pedido, se chequearán ambos hijos (derecho e izquierdo) para ver si también se deben mostrar en consola.
 
 ## Ejercicio 2
-- Orden espacial O(n), orden temporal O(n . log n). / Justificación: El espacial se ve claramente porque el heap se guarda como un array de n+1 posiciones (dado que la pos cero no se utiliza). Interactuamos con el array como si fuera un arbol, por lo tanto nos movemos por "ramas" y de manera logar'itmica, chequeando hijos y padre. Esto lo hacemos (remove()) tantas veces como archivos se ingresaron. Por esto el orden temporal es O(n . log n).
+- Orden temporal O(L) con cajón más grande y cantidad de cajones en O(1) / Justificación: Para setear una nueva palabra, primero la ordenamos (siempre un for de 26 iteraciones) y luego recorremos cada caracter de la palabra para calcular su hash, entonces es O(L); después al ser una talba de hash, en promedio tenemos O(1), ya que controlamos el factor de carga y la función de hash. La parte de la última linea la vamos manteniendo con variables que se actualizan cada vez que agregamos una palabra, entonces al momento de imprimir la última linea, esta es O(1).
 
 ## Ejercicio 3
-- Sin restricciones de órdenes. / Justificación: ...
+- Orden espacial O(n), orden temporal O(n . log n). / Justificación: El espacial se ve claramente porque el heap se guarda como un array de n+1 posiciones (dado que la pos cero no se utiliza). Interactuamos con el array como si fuera un arbol, por lo tanto nos movemos por "ramas" y de manera logar'itmica, chequeando hijos y padre. Esto lo hacemos (remove()) tantas veces como archivos se ingresaron. Por esto el orden temporal es O(n . log n).
 
 ## Ejercicio 4
 - Orden espacial O(V + A), Orden temporal O((V + A) log V). / Justificación: El orden espacial se cumple por lo visto en clase de la implementación de grafos como listas de adyacencia; guardamos el array de los vértices y las listas que contienen únicamente las aristas existentes.

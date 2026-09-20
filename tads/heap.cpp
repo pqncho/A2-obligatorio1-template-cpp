@@ -6,6 +6,7 @@ public:
     virtual T pop() = 0;
     virtual T top() = 0;
     virtual int size() = 0;
+    virtual bool isEmpty() = 0;
     virtual void setWeight(T w) = 0;
     virtual T getWeight() = 0;
 };

@@ -69,4 +69,8 @@ después lo seguimos con Fran.
 - Más tarde seguí con lo de graph.cpp, agregué hasEdge() que quizás nos sea util, y empecé adyacency_list implementando las funciones de graph. Igual hay que ver si adyacents no devuelve ya el iterador, por ahora hice que devuevla la lista de vecinos.
 
 ## 2026-09-19 — Francisco
-- compile y probe la nueva implementacion y resolucion del ejercicio 2 que hizo pia, con la prueba de 1000 inputs y efectivamente devolvio lo que debia devolver, por lo que estamos muy feliz.
+- compile y probe la nueva implementacion y resolucion del ejercicio 2 que hizo pia, con la prueba de 1000 inputs y efectivamente devolvio lo que debia devolver, por lo que estamos muy felices.
+
+## 2026-09-14 - En conjunto
+- Seguimos pensando en como resolver el ejercicio4, teníamos la idea de armar el heap y el grafo de dependencias al mismo tiempo y luego en ordenTopologico ir, para cada vertice, consultando la cabeza del heap a ver si no tenía dependencias. Si las tenía pensabamos guardar esos elementos en una lista y luego volver a agregarlos, pero nos dimos cuenta que se nos iba de ordenes. Entonces volvimos a una idea que ya habíamos tirado antes, de ir construyendo el heap solo con los elementos que estan listos(grado de entrada cero), e imprimirlos antes de seguir avanzando al siguiente vértice.
+- No tenemos muy claro como guardar las prioridades si seguimos esa logica, por ahora las pensamos tener en un array.
