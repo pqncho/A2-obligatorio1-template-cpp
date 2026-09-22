@@ -2,13 +2,6 @@
 
 **Integrantes:** Pia Gutierrez (359147), Francisco Lino (347691)
 
-> **Instrucciones** (borrar esta sección antes de entregar): agregar una entrada por
-> cada día trabajado, indicando la fecha y quién trabajó (un integrante o "En conjunto").
-> Registrar el proceso real: ideas exploradas, decisiones y su justificación, partes de
-> implementaciones, bugs encontrados y cómo se corrigieron, resultados de pruebas y dudas
-> abiertas. Si se usó IA ese día, indicar herramienta, consulta y qué se hizo con la
-> respuesta. Una bitácora escrita íntegramente el día de la entrega implica pérdida de puntos.
-
 ## 2026-09-05 — En conjunto 
 - Comenzamos leyendo la letra del ej.1. Investigamos la libreria string para utilizar funciones utiles para poder dividir y leer el input.
 - Modificamos el AVL y BST que habiamos hecho en clase para agregar las funciones especificas al ejercicio.
@@ -74,3 +67,6 @@ después lo seguimos con Fran.
 ## 2026-09-14 - En conjunto
 - Seguimos pensando en como resolver el ejercicio4, teníamos la idea de armar el heap y el grafo de dependencias al mismo tiempo y luego en ordenTopologico ir, para cada vertice, consultando la cabeza del heap a ver si no tenía dependencias. Si las tenía pensabamos guardar esos elementos en una lista y luego volver a agregarlos, pero nos dimos cuenta que se nos iba de ordenes. Entonces volvimos a una idea que ya habíamos tirado antes, de ir construyendo el heap solo con los elementos que estan listos(grado de entrada cero), e imprimirlos antes de seguir avanzando al siguiente vértice.
 - No tenemos muy claro como guardar las prioridades si seguimos esa logica, por ahora las pensamos tener en un array.
+
+## 2026-09-22 - En conjunto
+- Seguimos implementando el tad grafo, cambiando varias cosas despues de lo que dimos en clase. Le consultamos al profe del practico algunas dudas sobre como pensamos resolver el ejercicio y agregregamos un array ordenCompilacion donde vamos a ir guardando los modulos a imprimir en el orden que los pasa el heap. De esta forma, si vemos que no se agregaron todos los vertices (hay un ciclo) simplemente imprimimos imposible e ignoramos el array, en cambio si se agregaron todos los modulos los imprimimos en el orden que nos dio el heap. Para agregarlos al array usamos la variable icom donde vamos siguiendo el indice. Tenemos que implementar las funciones remove y get en listas porque como no las usamos en el ejercicio anterior, no estaban.

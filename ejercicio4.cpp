@@ -1,5 +1,5 @@
 #include <cassert>
-#include <string>
+//#include <string>
 #include <iostream>
 //#include <limits>
 #include "tads/graph.cpp"
@@ -9,22 +9,32 @@
 
 using namespace std;
 
-int checkCycles(){
-
-    return 0;
-}
-
-void ordenacionTopologica(Graph<long long> *deps, int v, long long *prios){
+void ordenacionTopologica(Graph *deps, int v, int *prios){
     int* grEntrada = deps->entryDegree();
+    int* ordenCompilacion = new int[v];
+    int icom = 0; //index del orden de compilacion 
     bool* visitados = new bool[v+1]();
-    priorityQueue<long long, long long> *compilar = new minPriorityQueue<long long, long long>();
+    priorityQueue<int, int> *compilar = new minPriorityQueue<int, int>();
     for (int i = 1; i <= v; i++) {
         if(grEntrada[i] == 0) compilar->push(i, prios[i-1]);
     } //agregamos todos los que no tienen dependencias
-    for (int i = 0; i < v; i++) {
-        long long ver = compilar->pop();
-        cout<< ver << endl;
-        //cambiar a iterador adyacentes
+    while(!compilar->isEmpty()) {
+        //usamos el icom para chequear  que esten todos los vertices contados
+        int v = compilar->pop();
+        ordenCompilacion[icom] = v; //agregamos en el orden q da el heap
+        Iterator<edge> *vecinos = deps->getNeighbors(v);
+        while(vecinos->hasNext()) {
+            int ady = vecinos->next().from;
+            if(--grEntrada[ady] == 0) compilar->push(ady, prios[ady-1]); //chequear indicies lpm
+        }
+    }
+    if(icom + 1 != v) {
+        cout << "imposible" << endl;
+        //delete [] ordenCompilacion;
+    } else {
+        for (int i = 0; i < icom; i++) {
+            cout << ordenCompilacion[i] << endl;
+        }
     }
 }
 
@@ -33,20 +43,20 @@ int main()
     int v;
     int a;
     cin >> v >> a;
-    Graph<long long> *deps = new adyacencyList<long long>(v+1);
-    long long *prios = new long long[v];
-    string ans;
+    Graph *deps = new adyacencyList(v+1);
+    int *prios = new int[v];
+    int ans;
     for (int i = 0; i < v; i++) {
         cin >> ans; //desp hay q restar uno porq usamos el cero
-        prios[i] = stoll(ans);
+        prios[i] = ans;
     }
     //dependencias
-    string ans2;
+    int ans2;
     for (int i = 0; i < a; i++) {
         cin >> ans;
         cin >> ans2;
-        deps->addEdge(stoll(ans), stoll(ans2)); 
+        deps->addEdge(ans, ans2); 
     }
-    //ordenacionTopologica.
+    ordenacionTopologica(deps, v, prios);
     return 0;
 }

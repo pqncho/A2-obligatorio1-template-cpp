@@ -15,7 +15,7 @@ private:
         }
     };
 
-    class linkedListIterator: public iterator<T> {
+    class linkedListIterator: public Iterator<T> {
     private:
         node* now;
     public:
@@ -46,7 +46,7 @@ private:
 public:
     linkedList(){}
 
-    virtual iterator<T>* getIterator() override {
+    virtual Iterator<T>* getIterator() override {
         return new linkedListIterator(this->head);
     }
 
@@ -67,6 +67,14 @@ public:
                 count++;
             }
         }
+    }
+    
+    virtual T get(T data) override {
+
+    }
+
+    virtual void remove(T data) override {
+
     }
 
     virtual int size() override { return this->count; } //cantidad de elems distintos
