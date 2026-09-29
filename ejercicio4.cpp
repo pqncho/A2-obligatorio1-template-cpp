@@ -11,28 +11,28 @@ using namespace std;
 
 void ordenacionTopologica(Graph *deps, int v, int *prios){
     int* grEntrada = deps->entryDegree();
-    int* ordenCompilacion = new int[v];
-    int icom = 0; //index del orden de compilacion 
+    int* ordenCompilacion = new int[v+1];
+    int icom = 1; //index del orden de compilacion 
     bool* visitados = new bool[v+1]();
     priorityQueue<int, int> *compilar = new minPriorityQueue<int, int>();
     for (int i = 1; i <= v; i++) {
-        if(grEntrada[i] == 0) compilar->push(i, prios[i-1]);
+        if(grEntrada[i] == 0) compilar->push(i, prios[i]);
     } //agregamos todos los que no tienen dependencias
     while(!compilar->isEmpty()) {
         //usamos el icom para chequear  que esten todos los vertices contados
         int v = compilar->pop();
-        ordenCompilacion[icom] = v; //agregamos en el orden q da el heap
+        ordenCompilacion[icom++] = v; //agregamos en el orden q da el heap
         Iterator<edge> *vecinos = deps->getNeighbors(v);
         while(vecinos->hasNext()) {
-            int ady = vecinos->next().from;
-            if(--grEntrada[ady] == 0) compilar->push(ady, prios[ady-1]); //chequear indicies lpm
+            int ady = vecinos->next().to;
+            if(--grEntrada[ady] == 0) compilar->push(ady, prios[ady]); //chequear indicies lpm
         }
     }
-    if(icom + 1 != v) {
+    if(icom <= v) {
         cout << "imposible" << endl;
         //delete [] ordenCompilacion;
     } else {
-        for (int i = 0; i < icom; i++) {
+        for (int i = 1; i < icom; i++) {
             cout << ordenCompilacion[i] << endl;
         }
     }
@@ -44,7 +44,7 @@ int main()
     int a;
     cin >> v >> a;
     Graph *deps = new adyacencyList(v+1);
-    int *prios = new int[v];
+    int *prios = new int[v+1];
     int ans;
     for (int i = 0; i < v; i++) {
         cin >> ans; //desp hay q restar uno porq usamos el cero

@@ -70,3 +70,9 @@ después lo seguimos con Fran.
 
 ## 2026-09-22 - En conjunto
 - Seguimos implementando el tad grafo, cambiando varias cosas despues de lo que dimos en clase. Le consultamos al profe del practico algunas dudas sobre como pensamos resolver el ejercicio y agregregamos un array ordenCompilacion donde vamos a ir guardando los modulos a imprimir en el orden que los pasa el heap. De esta forma, si vemos que no se agregaron todos los vertices (hay un ciclo) simplemente imprimimos imposible e ignoramos el array, en cambio si se agregaron todos los modulos los imprimimos en el orden que nos dio el heap. Para agregarlos al array usamos la variable icom donde vamos siguiendo el indice. Tenemos que implementar las funciones remove y get en listas porque como no las usamos en el ejercicio anterior, no estaban.
+
+## 2026-09-27 - En conjunto
+
+- Hablamos con el profe y nos aclaro que no podiamos implementar las listas como habiamos pensado, es decir, con apariciones, por lo que vamos a cambiarlo a un multiset.
+
+- Arreglamos algunos detalles del codigo del ejercicio 4, como los indices de los arrays en ordenacion topologica.

@@ -58,7 +58,7 @@ public:
     virtual bool hasEdge(int v1, int v2) override {
         if(v1 >= this->verts || v2 >= this->verts) return false;
         edge ne = edge(v1, v2, 1);
-        return this->arrAdy[v1]->getTimesBy(ne) != 0;
+        return true;//this->arrAdy[v1]->getTimesBy(ne) != 0;
     } 
 
     virtual edge getEdge(int v, int w) override {
