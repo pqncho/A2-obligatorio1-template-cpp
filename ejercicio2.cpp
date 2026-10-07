@@ -31,7 +31,7 @@ int main()
     int n;
     cin >> n;
     cin.ignore();
-    table<string, string> *cajones = new OpenHashTable<string, string>(n, new stringHash());
+    table<string, string> *cajones = new OpenHashTable<string, string>(n, new stringHash()); //string int
     for (int i = 0; i < n; i++) {
         string ans;
         cin >> ans;

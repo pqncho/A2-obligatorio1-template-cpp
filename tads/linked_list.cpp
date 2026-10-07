@@ -11,7 +11,6 @@ private:
 
         node(T data){
             this->data = data;
-            this->times = 1;
         }
     };
 
@@ -37,11 +36,6 @@ private:
     node* head = nullptr;
     int count = 0;
 
-    int getTimes(node* h, T d){
-        if(h == nullptr) return 0;
-        if(h->data == d) return h->times;
-        return getTimes(h->next, d);
-    }
 
 public:
     linkedList(){}
@@ -69,14 +63,33 @@ public:
         }
     }
     
-    virtual T get(T data) override {
+    virtual int findPos(T data) override {
+        node* nd = this->head;
+        bool es = false;
+        int ix = 0;
+        while((nd != nullptr) && !es){
+            if(nd->data == data){
+                es = true;
+            } else {
+                ix++;
+            }
+            nd = nd->next;
+        }
+        return ix;
+    }
 
+    virtual T getPos(int ix) override {
+        if((ix >= this->count) || (ix < 0)) return nullptr;
+        node* dato = this->head;
+        while(ix > 0){
+            dato = dato->next;
+            ix--;
+        }
+        return dato->data;
     }
 
     virtual void remove(T data) override {
         if(!this->head)  return;
-
-
         
     }
 

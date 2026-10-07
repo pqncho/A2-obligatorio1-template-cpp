@@ -76,3 +76,7 @@ después lo seguimos con Fran.
 - Hablamos con el profe y nos aclaro que no podiamos implementar las listas como habiamos pensado, es decir, con apariciones, por lo que vamos a cambiarlo a un multiset.
 
 - Arreglamos algunos detalles del codigo del ejercicio 4, como los indices de los arrays en ordenacion topologica.
+
+## 2026-10-07 - En conjunto
+
+- Volvimos a pensar el tema del ejercicio2, decidimos armar un par (por ahora funnypair) con la palabra ordenada alfabeticamente y las apariciones que tiene, y guardarlo en las listas. Tambien empezamos a implementar las funciones getPos, findPos, y remove de listas, para resolver el set de la tabla de hash. Vamos primero a chequear si ya esta la palabra, si esta borrarla, actualizar sus apariciones, y volver a agregarla a la lista.
