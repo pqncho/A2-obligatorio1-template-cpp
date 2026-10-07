@@ -8,7 +8,23 @@
 
 template <class K, class V> class OpenHashTable: public table <K, V> {
     private:
-        list<V> **arrBuckets;
+        struct funnypair {
+            K elem;
+            int times;
+
+            funnypair(){}
+
+            funnypair(K elem, int times){
+                this->elem = elem;
+                this->times = times;
+            }
+
+            bool operator==(const funnypair &other) {
+                return this->elem == other.elem; //(this->times == other.times)
+            }
+        };
+
+        list<funnypair> **arrBuckets;
         int cap;
         int elems;
         int maxBox;
@@ -16,29 +32,40 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
         hashFunc<K> *h;
        
 
-        virtual void set2(list<V> **arrBuckets, V word){
+        virtual void set2(list<funnypair> **arrBuckets, V word){
             int hs = hacerPositivo((this->h->hash(word)))%(this->cap);
         
-            int b4 = arrBuckets[hs]->size();
-            arrBuckets[hs]->add(word);
-            if (arrBuckets[hs]->size() > b4) this->filled++;
-            if (arrBuckets[hs]->getTimesBy(word) > this->maxBox) this->maxBox++;
-            //creo q solo con el ++ andaria porq lo chequeamos cada vez q se agrega una palabra, 
-            //entonces solo deberia crecer en uno. De ultima el cambio es una boludez.
+            //int b4 = arrBuckets[hs]->size();
+            funnypair fp = funnypair(word, 1);
+            int posLista = this->arrBuckets[hs]->findPos(fp);
+
+            if(posLista == -1) { //nuevo cajon
+                this->arrBuckets[hs]->add(fp);
+                this->filled++; 
+                if(this->maxBox == 0) this->maxBox++; //1er cajon
+            } else {
+                funnypair actualizar = this->arrBuckets[hs]->getPos(posLista);
+                this->arrBuckets[hs]->remove(actualizar);
+                actualizar.times++;
+                this->arrBuckets[hs]->add(actualizar);
+                if (actualizar.apariciones > this->maxBox) {
+                    this->maxBox = actualizar.apariciones;
+                }
+            }
         }
 
-        virtual int get2(list<V> **arrBuckets, V value){
+        virtual int get2(list<funnypair> **arrBuckets, V value){
             int hs = hacerPositivo((this->h->hash(value)))%(this->cap);
             return arrBuckets[hs]->getTimesBy(value);
         }
 
     public:
         OpenHashTable(int cap, hashFunc<K> *h) {
-        this->cap = cap*2;
-        this->arrBuckets = new list<V> *[cap*2];
+        this->cap = (cap*2)/3;
+        this->arrBuckets = new list<funnypair> *[(cap*2)/3];
         if(this->cap <=0) this->cap=1;
         for(int i=0; i<this->cap;i++){
-            this->arrBuckets[i] = new linkedList<V>();
+            this->arrBuckets[i] = new linkedList<funnypair>();
         }
         this->elems = 0;
         this->maxBox = 0;
