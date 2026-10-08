@@ -10,6 +10,7 @@ private:
 
         node(T data){
             this->data = data;
+            this->next=nullptr; 
         }
     };
 
@@ -37,7 +38,11 @@ private:
 
 
 public:
-    linkedList(){}
+    linkedList(){
+        this->head=nullptr;
+        this->count=0;
+
+    }
 
     virtual Iterator<T>* getIterator() override {
         return new linkedListIterator(this->head);
@@ -51,6 +56,7 @@ public:
             nd->next = this->head;
             this->head = nd;
         }
+        this->count++;
     }
     
     virtual int findPos(T data) override {
@@ -65,11 +71,14 @@ public:
             }
             nd = nd->next;
         }
+        if(!es){
+            return -1;
+        }
         return ix;
     }
 
     virtual T getPos(int ix) override {
-        if((ix >= this->count) || (ix < 0)) return nullptr;
+        if((ix >= this->count) || (ix < 0)) return T();
         node* dato = this->head;
         while(ix > 0){
             dato = dato->next;
@@ -81,11 +90,15 @@ public:
     virtual void remove(T data) override {
         if(!this->head) return;
         node* nd = this->head;
-        if(nd->data == data) this->head = nd->next;
+        if(nd->data == data){
+             this->head = nd->next;
+            return;
+        }
         while(nd->next != nullptr && nd->next->data != data) nd = nd->next;
         if(nd){
             nd->next = nd->next->next;
         }
+        this->count--;
     }
 
     virtual int size() override { return this->count; } //cantidad de elems distintos
