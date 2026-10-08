@@ -6,7 +6,6 @@ template <class T> class linkedList : public list<T> {
 private:
     struct node{
         T data;
-        int times;
         node *next;
 
         node(T data){
@@ -47,19 +46,10 @@ public:
     virtual void add(T d) override {
         if(this->head == nullptr){
             this->head = new node(d);
-            this->head->next = nullptr;
-            count++;
         } else {
-            node* aux = this->head;
-            while(aux->next && aux->data != d){
-                aux = aux->next;
-            }
-            if(aux->data == d) {
-                aux->times++; 
-            } else {
-                aux->next = new node(d);
-                count++;
-            }
+            node* nd = new node(d);
+            nd->next = this->head;
+            this->head = nd;
         }
     }
     
@@ -89,8 +79,13 @@ public:
     }
 
     virtual void remove(T data) override {
-        if(!this->head)  return;
-        
+        if(!this->head) return;
+        node* nd = this->head;
+        if(nd->data == data) this->head = nd->next;
+        while(nd->next != nullptr && nd->next->data != data) nd = nd->next;
+        if(nd){
+            nd->next = nd->next->next;
+        }
     }
 
     virtual int size() override { return this->count; } //cantidad de elems distintos

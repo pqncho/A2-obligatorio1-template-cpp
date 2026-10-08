@@ -20,7 +20,7 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
             }
 
             bool operator==(const funnypair &other) {
-                return this->elem == other.elem; //(this->times == other.times)
+                return this->elem == other.elem;
             }
         };
 
@@ -35,7 +35,6 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
         virtual void set2(list<funnypair> **arrBuckets, V word){
             int hs = hacerPositivo((this->h->hash(word)))%(this->cap);
         
-            //int b4 = arrBuckets[hs]->size();
             funnypair fp = funnypair(word, 1);
             int posLista = this->arrBuckets[hs]->findPos(fp);
 
@@ -48,30 +47,34 @@ template <class K, class V> class OpenHashTable: public table <K, V> {
                 this->arrBuckets[hs]->remove(actualizar);
                 actualizar.times++;
                 this->arrBuckets[hs]->add(actualizar);
-                if (actualizar.apariciones > this->maxBox) {
-                    this->maxBox = actualizar.apariciones;
+                if (actualizar.times > this->maxBox) {
+                    this->maxBox = actualizar.times;
                 }
             }
         }
 
         virtual int get2(list<funnypair> **arrBuckets, V value){
             int hs = hacerPositivo((this->h->hash(value)))%(this->cap);
-            return arrBuckets[hs]->getTimesBy(value);
+            funnypair fp = funnypair(value, 1);
+            int posLista = this->arrBuckets[hs]->findPos(fp);
+            fp = arrBuckets[hs]->getPos(posLista);
+            if(fp) return fp.times;
+            return 0;
         }
 
     public:
         OpenHashTable(int cap, hashFunc<K> *h) {
-        this->cap = (cap*2)/3;
-        this->arrBuckets = new list<funnypair> *[(cap*2)/3];
-        if(this->cap <=0) this->cap=1;
-        for(int i=0; i<this->cap;i++){
-            this->arrBuckets[i] = new linkedList<funnypair>();
+            if(cap < 0) cap = cap*(-1);
+            this->cap = (cap*2)/3;
+            this->arrBuckets = new list<funnypair>*[(cap*2)/3];
+            for(int i=0; i<this->cap;i++){
+                this->arrBuckets[i] = new linkedList<funnypair>();
+            }
+            this->elems = 0;
+            this->maxBox = 0;
+            this->filled = 0;
+            this->h = h;
         }
-        this->elems = 0;
-        this->maxBox = 0;
-        this->filled = 0;
-        this->h = h;
-    }
         virtual void set(V value) override { set2(this->arrBuckets, value); };
         virtual int get(V value) override { return get2(this->arrBuckets, value); };
         virtual int getMaxBox() override { return this->maxBox; };
