@@ -7,14 +7,17 @@
 
 using namespace std;
 
-void consolidate(heap<long long>* ar){
-    if(ar->size() == 1) return;
-    long long min1 = ar->top();
-    long long min2 = ar->top();
-    long long merge = min1 + min2;
-    ar->setWeight(ar->getWeight() + merge);
-    ar->push(merge);
-    consolidate(ar);
+long long consolidate(heap<long long>* ar){
+    long long weight = 0;
+
+    while(ar->size() > 1){
+        long long min1 = ar->pop();   
+        long long min2 = ar->pop();
+        long long merge = min1 + min2;
+        weight += merge;
+        ar->push(merge);
+    }
+    return weight;
 }
 
 int main()
@@ -29,7 +32,7 @@ int main()
         archivos->push(ans);
     }
 
-    consolidate(archivos);
-    cout << archivos->getWeight() << endl;
+    
+    cout << consolidate(archivos) << endl;
     return 0;
 }

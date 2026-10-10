@@ -8,7 +8,7 @@ template <class T> class minHeap : public heap<T> {
         T* arr;
         int arrLength;
         int ix;
-        T weight;
+       
 
         void swap(int posA, int posB) {
             T aux = this->arr[posA];
@@ -75,7 +75,7 @@ template <class T> class minHeap : public heap<T> {
             this->arr = new T[size + 1]();
             this->arrLength = size + 1;
             this->ix = 0;
-            this->weight = 0;
+            
         }
 
         virtual void push(T elem) override { 
@@ -84,13 +84,12 @@ template <class T> class minHeap : public heap<T> {
             siftUp(this->ix);    
         }
         
-        virtual T pop() override { 
+        virtual T top() override { 
             assert(size() >= 1);
             return this->arr[1]; 
         }
-        virtual T top() override { return remove(); }
+        virtual T pop() override { return remove(); }
         virtual int size() override { return this->ix; }
         virtual bool isEmpty() override { return this->ix == 0; }
-        virtual void setWeight(T w) override { this->weight = w; }
-        virtual T getWeight() override {return this->weight; }
+        
 };

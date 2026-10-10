@@ -47,7 +47,7 @@ public:
     }
 
     virtual int* entryDegree() override {
-        int* degs = new int[this->verts+1];
+        int* degs = new int[this->verts+1]();
         Iterator<edge> *it = this->getAllEdges();
         while(it->hasNext()){
             degs[it->next().to]++;
@@ -72,7 +72,7 @@ public:
     virtual Iterator<edge> *getAllEdges() override {
         list<edge> *collection = new linkedList<edge>();
 
-        for (int i = 1; i < this->verts; i++) {
+        for (int i = 1; i <= this->verts; i++) {
             Iterator<edge> *it = this->arrAdy[i]->getIterator();
             while (it->hasNext()) {
                 collection->add(it->next());

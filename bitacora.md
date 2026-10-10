@@ -81,8 +81,14 @@ después lo seguimos con Fran.
 
 - Volvimos a pensar el tema del ejercicio2, decidimos armar un par (por ahora funnypair) con la palabra ordenada alfabeticamente y las apariciones que tiene, y guardarlo en las listas. Tambien empezamos a implementar las funciones getPos, findPos, y remove de listas, para resolver el set de la tabla de hash. Vamos primero a chequear si ya esta la palabra, si esta borrarla, actualizar sus apariciones, y volver a agregarla a la lista.
 
-## 2026-10-07 - En conjunto
+## 2026-10-08 - En conjunto
 
 - Finalmente, creemos que resolvimos el ejercicio 2. Al principio teniamos un error en el remove de la lista, para el caso base de borrar la cabeza de la lista no retornabamos, y seguia recorriendo con el while.
 - luego de darnos cuenta se arreglo y la felicidad fue inmensa.
 - anduvo con el input de 100, por lo que luego hay que probarlo con mas, pero no queremos entrar nuevamente en depre por lo que lo dejaremos para la proxima reunion.
+
+## 2026-10-10 - En conjunto
+
+- Bueno increiblemente terminamos el ejercicio 4 (al parecer, anda con 100 inputs), tuvimos que cambiar un par de detalles del min heap, como por ejemplo, habiamos nombrado top y pop al reves, por lo que estaba clarisimo que no iba a funcionar nunca, porque siempre agrandaba el heap.
+
+- tambien sacamos el weight del minHeap porque no era parte del TAD y lo incluimos en el archivo ejercicio3.

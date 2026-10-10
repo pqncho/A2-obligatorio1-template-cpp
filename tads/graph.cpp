@@ -11,6 +11,12 @@ struct edge {
         this->weight = weight;
     }
 
+    edge(){
+        this->from=-1;
+        this->to=-1;
+        this->weight=-1;
+    }
+
     bool operator==(const edge &other) {
         return this->from == other.from && this->to == other.to;
     }

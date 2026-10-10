@@ -39,6 +39,11 @@ private:
     minHeap<pair> *h; 
 
 public:
+
+
+minPriorityQueue(int size){
+    this->h = new minHeap<pair>(size);
+}
     virtual void push(E elem, P prio) override { this->h->push(pair(elem, prio)); }
     virtual E top() override { return this->h->top().elem; }
     virtual E pop() override { return this->h->pop().elem; }

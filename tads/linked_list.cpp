@@ -92,13 +92,15 @@ public:
         node* nd = this->head;
         if(nd->data == data){
              this->head = nd->next;
+             this->count--;
             return;
         }
         while(nd->next != nullptr && nd->next->data != data) nd = nd->next;
-        if(nd){
+        if(nd->next){
             nd->next = nd->next->next;
+            this->count--;
         }
-        this->count--;
+        
     }
 
     virtual int size() override { return this->count; } //cantidad de elems distintos

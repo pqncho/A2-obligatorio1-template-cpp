@@ -11,10 +11,10 @@ using namespace std;
 
 void ordenacionTopologica(Graph *deps, int v, int *prios){
     int* grEntrada = deps->entryDegree();
-    int* ordenCompilacion = new int[v+1];
+    int* ordenCompilacion = new int[v+1]();
     int icom = 1; //index del orden de compilacion 
     bool* visitados = new bool[v+1]();
-    priorityQueue<int, int> *compilar = new minPriorityQueue<int, int>();
+    priorityQueue<int, int> *compilar = new minPriorityQueue<int, int>(v+1);
     for (int i = 1; i <= v; i++) {
         if(grEntrada[i] == 0) compilar->push(i, prios[i]);
     } //agregamos todos los que no tienen dependencias
