@@ -21,11 +21,13 @@ void ordenacionTopologica(Graph *deps, int v, int *prios){
     while(!compilar->isEmpty()) {
         //usamos el icom para chequear  que esten todos los vertices contados
         int v = compilar->pop();
-        ordenCompilacion[icom++] = v; //agregamos en el orden q da el heap
+        ordenCompilacion[icom] = v; //agregamos en el orden q da el heap
+        icom++;
         Iterator<edge> *vecinos = deps->getNeighbors(v);
         while(vecinos->hasNext()) {
             int ady = vecinos->next().to;
-            if(--grEntrada[ady] == 0) compilar->push(ady, prios[ady]); //chequear indicies lpm
+            grEntrada[ady]--;
+            if(grEntrada[ady] == 0) compilar->push(ady, prios[ady]); //chequear indicies lpm
         }
     }
     if(icom <= v) {
@@ -43,11 +45,11 @@ int main()
     int v;
     int a;
     cin >> v >> a;
-    Graph *deps = new adyacencyList(v+1);
-    int *prios = new int[v+1];
+    Graph *deps = new adyacencyList(v);
+    int *prios = new int[v+1]();
     int ans;
-    for (int i = 0; i < v; i++) {
-        cin >> ans; //desp hay q restar uno porq usamos el cero
+    for (int i = 1; i <= v; i++) {
+        cin >> ans;
         prios[i] = ans;
     }
     //dependencias

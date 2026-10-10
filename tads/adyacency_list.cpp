@@ -14,14 +14,13 @@ private:
 public:
     adyacencyList(int vs){
         this->verts = vs;
-        this->arrAdy = new list<edge> *[vs];
-        for (int i = 0; i < this->verts; i++) {
-            this->arrAdy[i] = new linkedList<edge>(); // a chequear
+        this->arrAdy = new list<edge> *[vs + 1];
+        for (int i = 1; i <= this->verts; i++) {
+            this->arrAdy[i] = new linkedList<edge>();
         }
     }
     
-    virtual void addEdge(int v1, int v2) override { // v1 -> v2
-        //cambiar
+    virtual void addEdge(int v1, int v2) override {
         addWeightedEdge(v1, v2, 1);
     }
 
@@ -48,9 +47,10 @@ public:
     }
 
     virtual int* entryDegree() override {
-        int* degs = new int[this->verts];
-        for (int i = 1; i < this->verts; i++) {
-            degs[i] = this->arrAdy[i]->size();
+        int* degs = new int[this->verts+1];
+        Iterator<edge> *it = this->getAllEdges();
+        while(it->hasNext()){
+            degs[it->next().to]++;
         }
         return degs;
     }
@@ -58,7 +58,7 @@ public:
     virtual bool hasEdge(int v1, int v2) override {
         if(v1 >= this->verts || v2 >= this->verts) return false;
         edge ne = edge(v1, v2, 1);
-        return true;//this->arrAdy[v1]->getTimesBy(ne) != 0;
+        return this->arrAdy[v1]->findPos(ne) != -1;
     } 
 
     virtual edge getEdge(int v, int w) override {
@@ -66,7 +66,8 @@ public:
         assert(v <= this->verts);
         assert(w > 0);
         edge ne = edge(v, w, 1);
-        return this->arrAdy[v]->get(ne); //hay q hacerlos
+        int ix = this->arrAdy[v]->findPos(ne);
+        return this->arrAdy[v]->getPos(ix);
     }
     virtual Iterator<edge> *getAllEdges() override {
         list<edge> *collection = new linkedList<edge>();
