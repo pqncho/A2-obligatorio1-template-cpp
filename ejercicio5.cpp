@@ -1,6 +1,6 @@
 #include <cassert>
 #include <cstdint>
-#include <string>
+//#include <string>
 #include <iostream>
 //#include <limits>
 #include "tads/min_prio_queue.cpp"
@@ -26,20 +26,20 @@ int main()
     }
     //kruskal
     int64_t total = 0;
-    priorityQueue<edge, int>* pq = new minPriorityQueue<edge, int>(e);
+    priorityQueue<edge, int>* pq = new minPriorityQueue<edge, int>(2*e);
     Iterator<edge>* it = g->getAllEdges();
     while(it->hasNext()){
         edge e1 = it->next();
         pq->push(e1, e1.weight);
     }
-    int count = 0;
+    
     disjointSet* djs = new disjointSet(v);
-    while(!pq->isEmpty() && (count < v)){
+    while(!pq->isEmpty()){
         edge ed = pq->pop();
         if((ed.from != ed.to) && (djs->find(ed.from) != djs->find(ed.to))){
             djs->unionn(ed.from, ed.to);
             total+= ed.weight;
-            count++;
+            
         }
     }
     //comp conexas

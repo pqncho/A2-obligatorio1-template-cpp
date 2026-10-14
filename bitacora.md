@@ -92,3 +92,10 @@ después lo seguimos con Fran.
 - Bueno increiblemente terminamos el ejercicio 4 (al parecer, anda con 100 inputs), tuvimos que cambiar un par de detalles del min heap, como por ejemplo, habiamos nombrado top y pop al reves, por lo que estaba clarisimo que no iba a funcionar nunca, porque siempre agrandaba el heap.
 
 - tambien sacamos el weight del minHeap porque no era parte del TAD y lo incluimos en el archivo ejercicio3.
+
+
+## 2026-10-14 - En conjunto
+
+-  TERMINAMOS, o eso creemos, falta correr todas las pruebas, para cada ejercicio, pero por lo menos todas pasan con 100 inputs.
+- Para el ejercicio 5 implmentamos las optimizaciones que nos pidieron de djset, usando Kruskal para encontrar el arbol de recubrimiento minimo. Llevamos cuenta del costo total para retornar lo que pedia el ejercicio. 
+

@@ -20,6 +20,11 @@
 ## Ejercicio 4
 - Orden espacial O(V + A), Orden temporal O((V + A) log V). / Justificación: El orden espacial se cumple por lo visto en clase de la implementación de grafos como listas de adyacencia; guardamos el array de los vértices y las listas que contienen únicamente las aristas existentes.
 
-## Ejercicio 5
-- **Sin restricciones de órdenes.** / Justificación: Dado que en djset se implementaron ambas optimizaciones, podemos decir que las funciones de union y find son practicamente constantes en promedio, como se explica en la seccion Time Complexity de [Algorithms for Competitive Programming: Disjoint Set Union](https://cp-algorithms.com/data_structures/disjoint_set_union.html) 
+- Para el orden temporal, primero creamos el array con los grados de entrada de los vertices y esto es O(A), luego creamos una pq para todos los vertices, que es O(V). Luego para cada vertice de la pq recorremos sus adyacentes por lo que termina siendo O(V+A). Entonces el total es O(V+A).
 
+## Ejercicio 5
+- Orden espacial O(V+E), Orden temporal O(E*Log E). / Justificación: Dado que en djset se implementaron ambas optimizaciones, podemos decir que las funciones de union y find son practicamente constantes en promedio, como se explica en la seccion Time Complexity de [Algorithms for Competitive Programming: Disjoint Set Union](https://cp-algorithms.com/data_structures/disjoint_set_union.html) 
+
+- Cumple con el orden espacial porque lo guardamos como un grafo O(V+E) y ademas tenemos una cola de prioridad con  O(2*e) porque el grafo es no dirigido. Tambien tenemos el djset que es O(V).
+
+- En la parte de kruskal primero creamos la pq, que tiene O(E), luego para todas las aristas las vamos desencolando que es O(Log E) y utilizamos find y unionn, que como ya mencionamos tienen casi orden constante por la funcion inversa de ackermann. Luego de terminar la pq checkeamos el size del djset que es O(V). Entonces O(E) + O(E*Log E) + O(V) = O(E*Log E)

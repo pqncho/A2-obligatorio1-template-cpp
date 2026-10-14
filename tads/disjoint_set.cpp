@@ -3,16 +3,16 @@
 class disjointSet {
 private:
     int* arr;
-    int* size;
+    int* rank;
     int n;
 
 public:
     disjointSet(int n){
         this->arr = new int[n+1];
-        this->size = new int[n+1];
+        this->rank = new int[n+1];
         for (int i= 0; i <= n; i++) {
             arr[i] = i;
-            size[i] = 1;
+            rank[i] = 1;
         }
         this->n = n;
     }
@@ -25,13 +25,13 @@ public:
         int a = find(v);
         int b = find(w);
         if(a != b){
-            if(this->size[a] < this->size[b]){
+            if(this->rank[a] < this->rank[b]){
                 int aux = a;
                 a = b;
                 b = aux;
             }
             this->arr[b] = a;
-            this->size[a] += this->size[b];
+             if(this->rank[a] == this->rank[b]) this->rank[a]++;
         }
     }
     int sets(){
