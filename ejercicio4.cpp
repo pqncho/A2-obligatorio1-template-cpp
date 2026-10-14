@@ -13,7 +13,6 @@ void ordenacionTopologica(Graph *deps, int v, int *prios){
     int* grEntrada = deps->entryDegree();
     int* ordenCompilacion = new int[v+1]();
     int icom = 1; //index del orden de compilacion 
-    bool* visitados = new bool[v+1]();
     priorityQueue<int, int> *compilar = new minPriorityQueue<int, int>(v+1);
     for (int i = 1; i <= v; i++) {
         if(grEntrada[i] == 0) compilar->push(i, prios[i]);
@@ -45,7 +44,7 @@ int main()
     int v;
     int a;
     cin >> v >> a;
-    Graph *deps = new adyacencyList(v);
+    Graph *deps = new adyacencyList(v, true);
     int *prios = new int[v+1]();
     int ans;
     for (int i = 1; i <= v; i++) {
@@ -57,6 +56,7 @@ int main()
     for (int i = 0; i < a; i++) {
         cin >> ans;
         cin >> ans2;
+        //hacer getedge, si da bien no agregarlo
         deps->addEdge(ans, ans2); 
     }
     ordenacionTopologica(deps, v, prios);

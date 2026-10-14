@@ -12,12 +12,13 @@ private:
     bool isDirected;
 
 public:
-    adyacencyList(int vs){
+    adyacencyList(int vs, bool dir){
         this->verts = vs;
         this->arrAdy = new list<edge> *[vs + 1];
         for (int i = 1; i <= this->verts; i++) {
             this->arrAdy[i] = new linkedList<edge>();
         }
+        this->isDirected = dir;
     }
     
     virtual void addEdge(int v1, int v2) override {
@@ -32,8 +33,13 @@ public:
         assert(weight > 0);
 
         edge newEdge = edge(v1, v2, weight);
-        arrAdy[v1]->remove(newEdge);
+        //arrAdy[v1]->remove(newEdge);
         arrAdy[v1]->add(newEdge);
+        if(!this->isDirected){
+            edge newEdge2 = edge(v2, v1, weight);
+            //arrAdy[v2]->remove(newEdge2);
+            arrAdy[v2]->add(newEdge2); 
+        }
     }
 
     virtual void removeEdge(int v, int w) override {
@@ -44,6 +50,10 @@ public:
 
         edge ne = edge(v, w, 1);
         this->arrAdy[v]->remove(ne);
+        if(!this->isDirected){
+            edge ne2 = edge(w, v, 1);
+            this->arrAdy[w]->remove(ne);
+        }
     }
 
     virtual int* entryDegree() override {
@@ -67,6 +77,9 @@ public:
         assert(w > 0);
         edge ne = edge(v, w, 1);
         int ix = this->arrAdy[v]->findPos(ne);
+        if(ix == -1) {
+            return edge(0, 0, 1);
+        }
         return this->arrAdy[v]->getPos(ix);
     }
     virtual Iterator<edge> *getAllEdges() override {

@@ -13,7 +13,7 @@
 
 ## Ejercicio 2
 - Fuentes externas: 
-[String Hashing: Algorithms for Competitive Programming] (https://cp-algorithms.com/string/string-hashing.html)
+[Algorithms for Competitive Programming: String Hashing](https://cp-algorithms.com/string/string-hashing.html)
 - Se extrajo el codigo de la funcion de hash y se modifico para incorporar lo que se le ocurrio al equipo que funcionaria mejor para este ejercicio.
 
 - Preguntamos a chat gpt que errores en un codigo podrian ocasionar un segmentation fault, y dentro de su respuesta nos dijo que una de las cosas que podria ser era intentar acceder a un puntero que es nulo, por lo que al analizar el archivo de open_hash_table ya que estabamos bastantes seguros de que el problema estaba ahi, nos dimos cuenta de que en el constructor de la tabla inicializabamos todas las listas del array que son punteros en null, por lo que al momento de acceder a ellas daba ese error.
@@ -22,8 +22,9 @@
 - Utilizamos parte del template que dio el profe en clase y luego fue implementación íntegramente propia.
 
 ## Ejercicio 4
-- Implementación íntegramente propia, sin fuentes externas.
+- Utilizamos el template de grafos que dio el profe en clase (con distinto nombre porque lo habiamos empezado antes) y utilizamos ordenacion topologica, agregando algunas cosas para resolver el ejercicio.
 
 ## Ejercicio 5
-- Implementación íntegramente propia, sin fuentes externas.
-
+- Fuentes externas:
+[Algorithms for Competitive Programming: Disjoint Set Union](https://cp-algorithms.com/data_structures/disjoint_set_union.html) 
+- Leimos sobre Path Compression y Union by Rank/Size para poder implementar las optimizaciones como pedia la letra.

@@ -21,5 +21,5 @@
 - Orden espacial O(V + A), Orden temporal O((V + A) log V). / Justificación: El orden espacial se cumple por lo visto en clase de la implementación de grafos como listas de adyacencia; guardamos el array de los vértices y las listas que contienen únicamente las aristas existentes.
 
 ## Ejercicio 5
-- Sin restricciones de órdenes. / Justificación: ...
+- **Sin restricciones de órdenes.** / Justificación: Dado que en djset se implementaron ambas optimizaciones, podemos decir que las funciones de union y find son practicamente constantes en promedio, como se explica en la seccion Time Complexity de [Algorithms for Competitive Programming: Disjoint Set Union](https://cp-algorithms.com/data_structures/disjoint_set_union.html) 
 
