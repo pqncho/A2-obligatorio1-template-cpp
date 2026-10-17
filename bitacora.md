@@ -99,3 +99,7 @@ después lo seguimos con Fran.
 -  TERMINAMOS, o eso creemos, falta correr todas las pruebas, para cada ejercicio, pero por lo menos todas pasan con 100 inputs.
 - Para el ejercicio 5 implmentamos las optimizaciones que nos pidieron de djset, usando Kruskal para encontrar el arbol de recubrimiento minimo. Llevamos cuenta del costo total para retornar lo que pedia el ejercicio. 
 
+## 2026-10-17 - En conjunto
+
+- Bueeeno confirmado terminamos. Corrimos todas las pruebas para todos los ejercicios, y ya pasan todo. En el 5 tuvimos un problema con el input de paralelas que dabamos un resultado incorrecto. Vimos que era porque en las definiciones de bool operator del edge en < y > nos daban mal los casos que el padre pesaba mas que los hijos en siftdown y no bajaba poque los dos hijos eran identicos y < o > dan falso. Lo arreglamos con poner <= >= dentro del operator en esos casos, entonces ahora da true para operator< y operator> ya que son iguales.
+
