@@ -9,10 +9,12 @@
 
 ## Ejercicio 1
 - ALTA y BUSCAR O(log K). / Justificación: dado que los árboles son AVL, y tanto busqueda como alta hacen recorridos binarios (solo al nodo mayor o solo al nodo menor) el orden queda logarítmico.
-- RANGO O(log K mas R). / Justificación: fuera del intervalo que se pide, la funcion range2 sigue la misma lógica que add y search2. La diferencia es que si un dato pertenece al intervalo pedido, se chequearán ambos hijos (derecho e izquierdo) para ver si también se deben mostrar en consola.
+- Vale aclarar que las rotaciones para volver a balancear el arbol son O(1).
+- RANGO O(log K + R). / Justificación: fuera del intervalo que se pide, la funcion range2 sigue la misma lógica que add y search2 (Recorridos binarios). La diferencia es que si un dato pertenece al intervalo pedido, se chequearán ambos hijos (derecho e izquierdo) para ver si también se deben mostrar en consola.
+- Queda O(log K + R) porque se recorreran los R nodos que pertenecen al rango y para el resto de los nodos se ira solo para un lado, segun si se pasan del rango o no alcanzan a entrar.
 
 ## Ejercicio 2
-- Orden temporal O(L) con cajón más grande y cantidad de cajones en O(1) / Justificación: Para setear una nueva palabra, primero la ordenamos (siempre un for de 26 iteraciones) y luego recorremos cada caracter de la palabra para calcular su hash, entonces es O(L); después al ser una talba de hash, en promedio tenemos O(1), ya que controlamos el factor de carga y la función de hash. La parte de la última linea la vamos manteniendo con variables que se actualizan cada vez que agregamos una palabra, entonces al momento de imprimir la última linea, esta es O(1).
+- Orden temporal O(L) con cajón más grande y cantidad de cajones en O(1) / Justificación: Para setear una nueva palabra, primero la ordenamos (siempre un for de 26 iteraciones) y luego recorremos cada caracter de la palabra para calcular su hash, entonces es O(L); después al ser una talba de hash, en promedio tenemos O(1), ya que controlamos el factor de carga (decidimos que dejarla en 1.5 estaria bien porque es un hash abierto) y la función de hash. La parte de la última linea la vamos manteniendo con variables que se actualizan cada vez que agregamos una palabra, entonces al momento de imprimir la última linea, esta es O(1).
 
 ## Ejercicio 3
 - Orden espacial O(n), orden temporal O(n . log n). / Justificación: El espacial se ve claramente porque el heap se guarda como un array de n+1 posiciones (dado que la pos cero no se utiliza). Interactuamos con el array como si fuera un arbol, por lo tanto nos movemos por "ramas" y de manera logar'itmica, chequeando hijos y padre. Esto lo hacemos (remove()) tantas veces como archivos se ingresaron. Por esto el orden temporal es O(n . log n).

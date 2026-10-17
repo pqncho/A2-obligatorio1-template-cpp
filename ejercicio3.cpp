@@ -4,16 +4,17 @@
 //#include <limits>
 #include "tads/heap.cpp"
 #include "tads/min_heap.cpp"
+#include <cstdint>
 
 using namespace std;
 
-long long consolidate(heap<long long>* ar){
-    long long weight = 0;
+int64_t consolidate(heap<int64_t>* ar){
+    int64_t weight = 0;
 
     while(ar->size() > 1){
-        long long min1 = ar->pop();   
-        long long min2 = ar->pop();
-        long long merge = min1 + min2;
+        int64_t min1 = ar->pop();   
+        int64_t min2 = ar->pop();
+        int64_t merge = min1 + min2;
         weight += merge;
         ar->push(merge);
     }
@@ -25,9 +26,9 @@ int main()
     int n;
     cin >> n;
     cin.ignore();
-    heap<long long> *archivos = new minHeap<long long>(n);
+    heap<int64_t> *archivos = new minHeap<int64_t>(n);
     for (int i = 0; i < n; i++) {
-        long long ans;
+        int64_t ans;
         cin >> ans;
         archivos->push(ans);
     }

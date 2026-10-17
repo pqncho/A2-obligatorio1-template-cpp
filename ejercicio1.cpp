@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 //#include <limits>
-
+#include <cstdint>
 #include "tads/avl.cpp"
 
 
@@ -13,7 +13,7 @@ int main()
     int n;
     cin >> n;
     cin.ignore();
-    bst<long long> *monedas = new avl<long long>();
+    bst<int64_t> *monedas = new avl<int64_t>();
     bst<string> *pinturas = new avl<string>();
 
     for (int i = 0; i < n; i++) {

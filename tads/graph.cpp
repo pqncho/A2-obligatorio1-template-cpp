@@ -25,7 +25,7 @@ struct edge {
     }
 
     bool operator>(const edge &other) {
-        return this->from > other.from || this->to > other.to; 
+        return this->from >= other.from || this->to >= other.to; 
     }
 
      bool operator<=(const edge &other) {
@@ -33,7 +33,7 @@ struct edge {
     }
 
     bool operator<(const edge &other) {
-        return this->from < other.from || this->to < other.to; 
+        return this->from <= other.from || this->to <= other.to; 
     }
 };
 
