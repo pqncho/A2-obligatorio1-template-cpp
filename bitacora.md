@@ -120,4 +120,17 @@ después lo seguimos con Fran.
 
 ## 2026-11-7 - En conjunto
 
-Si lo haciamos manteniendo golesA y golesB no nos daban las dimensiones de la matriz, pero lo que nos importa es saber si estamos empatados o por cuanto vamos ganando. Entonces lo pensamos como el problema de los parentesis (sumando 1 cuando abre un parentesis y restando 1 cuando cierran) manteniendo una variable que le sumamos 1 cuando hay gol de A y le restamos 1 por cada gol de B. Cuando el contador vale 0 estamos empatados y sino es la ventaja de goles que llevamos. Entonces tenemos una sola variable para el contador y podemos hacer la matriz de indices in y contador.
+Bueno la banda se puso la camiseta y liquido 3 ejercicios.
+
+Empezamos cambiando unos detalles de manejo de strings del ejercicio 6, y al parecer quedo hecho.
+
+luego para el ejercicio 7, lo pensamos como un merge sort con una logica distinta en el merge.
+vamos separando el array en dos hasta llegar al caso base en que tenemos solo 1 elemento y devolvemos 0 remontadas epicas.
+Despues en contar comparamos cada elemento del primer array para ver si es mayor al doble que los elementos del segundo array;
+si lo es sumamos 1 a las remontadas epicas.
+
+Para el 9, (no queriamos estresarnos con el 8 asi que metimos doble salto), primero hicimos la version recursiva en la que llevamos cuenta del indice en el que vamos para los array de likes y goles, ademas dos variables golA y golB para chequear si podiamos bailar o quedabamos perdiendo.
+
+Para pasarlo a memo si lo haciamos manteniendo golesA y golesB no nos daban las dimensiones de la matriz, pero lo que nos importa es saber si estamos empatados o por cuanto vamos ganando. Entonces lo pensamos como el problema de los parentesis (sumando 1 cuando abre un parentesis y restando 1 cuando cierran) manteniendo una variable que le sumamos 1 cuando hay gol de A y le restamos 1 por cada gol de B. Cuando el contador vale 0 estamos empatados y sino es la ventaja de goles que llevamos. Entonces tenemos una sola variable para el contador y podemos hacer la matriz de indices in y contador.
+
+Para cada ronda tenemos dos valores segun si bailo o no, Entonces dijimos de mantener dos matrices separadas para poder cumplir con el orden espacial k.k Y con la variable bailo vamos viendo que matriz consultar.
