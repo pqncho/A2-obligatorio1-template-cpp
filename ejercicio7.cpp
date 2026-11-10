@@ -3,13 +3,57 @@
 
 using namespace std;
 
-int contar(int* res, int in, int m, int f){
+int mergeContar(int* res, int in, int m, int f){
     int c = 0;
-    for(int i = in; i <= m; i++){
-        for(int j = m+1; j<= f; j++){
-            if(res[i] > 2*res[j]) c++;
-        }
+    int n1 = m - in + 1;
+    int n2= f - m;
+    /////////////////////////
+
+    //for(int i = in; i <= m; i++){
+      //  for(int j = m+1; j<= f; j++){
+        //    if(res[i] > 2*res[j]) c++;
+        //}
+    //}
+    ////////////merge///////////
+    int* left = new int[n1]();
+    int* right = new int[n2]();
+    for(int i = 0; i < n1; i++){
+        left[i] = res[in + i];
     }
+    for(int j = 0; j < n2; j++){
+        right[j] = res[m + 1 + j];
+    }
+    int i = 0;
+    int j = 0;
+    int k = in;
+
+    //mergear
+    while(i < n1 && j < n2){
+        if(left[i] <= right[j]){
+            res[k] = left[i];
+            i++;
+        }else{ //der es mas chico
+            if(left[i] == 2*right[j]) c += m - i;
+            if(left[i] > 2*right[j]) c += m - i + 1;
+            res[k] = right[j];
+            j++;
+        }
+        k++;
+    }
+
+    //los q quedan
+    while(i < n1){
+        res[k] = left[i];
+        i++;
+        k++;
+    }
+
+    while(j < n2){
+        res[k] = right[j];
+        j++;
+        k++;
+    }
+
     return c;
 }
 
@@ -20,7 +64,7 @@ int remontadasEpicas(int* res, int i, int f){
     ret = remontadasEpicas(res, i, mid);
     ret += remontadasEpicas(res, mid +1, f);
 
-    return ret + contar(res, i, mid, f);
+    return ret + mergeContar(res, i, mid, f);
 }
 
 int main() { 
