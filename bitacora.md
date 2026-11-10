@@ -135,12 +135,14 @@ Para pasarlo a memo si lo haciamos manteniendo golesA y golesB no nos daban las 
 
 Para cada ronda tenemos dos valores segun si bailo o no, Entonces dijimos de mantener dos matrices separadas para poder cumplir con el orden espacial k.k Y con la variable bailo vamos viendo que matriz consultar.
 
-## 2026-11-8 - En conjunto 
+## 2026-11-8 - En conjunto
+
 Empezamos resolviendo el ejercicio de la mochila (recursivo y con tabulacion) por separado para empezar a pensar el ejercicio 8.
 Despues leimos bien la letra del ejercicio e hicimos la version recursiva con w, ix(0-n), l0, l1, l2, l3
-ademas de los arrays de peso, satisfaccion y categoria. 
+ademas de los arrays de peso, satisfaccion y categoria.
 El tema es pasarlo a tabulacion, porque cambian seis variables, entonces nos quedaria de dimension 6. Ya pensamos que la optimizacion que se puede hacer es que siempre comparamos unicamente con el producto anterior para calcular el actual, entonces podriamos quedarnos solo con la fila anterior, que nos quedaria dimension 5. Vamos a dejar para implementarlo despues porque no tenemos tan claro como crear un tensor tan grande, pero despues de ver eso seria la misma logica que tenemos en la verison recursiva. En esa verison, si el indice ix es menor a 0 o w == 0 entonces devolvemos cero. Luego, si el peso del producto es menor o igual al w y todavia se pueden agregar productos de esa categoria, devolvemos la maxima satisfaccion entre poner ese producto(sumar satisfaccion de ix mas la recursion del producto anterior restando el peso correspondiente al de w y con 1 producto menos de capacidad maxima en la categoria correspondiente) o no ponerlo(solo la recursion del producto anterior, sin restarle a ninguna categoria). Si el peso del producto es mayor al de la heladera o no se pueden poner mas productos de esa categoria simplemente devolvemos la satisfaccion del producto anterior, sin restar al w ni a las categorias.
 
-## 2026-11-10 - En conjunto 
+## 2026-11-10 - En conjunto
+
 - nos llego la nota del parcial profe lpm como sobrevivimos ahora??? :(
-- Justificando ordenes del ejercicio 7 vimos que nos quedaba O(n^2) porque chequeabamos cada elemento del primer array con todos los elementos del segundo array, nos quedaba (n/2)(n/2). Entonces lo que hicimos fue hacer mergeSort, ordenar los arrays, lo que hace que no tengamos que chequear cada elemento. Ejemplo, si en el array izquierdo hay un 5 y en el derecho un 1, 5 > 2.1 entonces sabemos que todo el resto de elementos despues del 5 tambien seran mas grandes que el 1. Por esto, sumamos m - i + 1 al contador.
+- Justificando ordenes del ejercicio 7 vimos que nos quedaba O(n^2) porque chequeabamos cada elemento del primer array con todos los elementos del segundo array, nos quedaba (n/2)(n/2). Entonces lo que hicimos fue hacer mergeSort, ordenar los arrays, lo que hace que no tengamos que chequear cada elemento. como los subarrays que recibimos ya estan ordenados no tenemos que ir chequeando elemento por elemento.
