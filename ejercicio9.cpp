@@ -92,12 +92,12 @@ int main() {
     likes[i] = p;
   }
 
-  int **memoBailo = new int *[k];
-  int **memoNo = new int *[k];
-  for (int i = 0; i < k; i++) {
-    memoBailo[i] = new int[k]();
-    memoNo[i] = new int[k]();
-    for (int j = 0; j < k; j++) {
+  int **memoBailo = new int *[k + 1];
+  int **memoNo = new int *[k + 1];
+  for (int i = 0; i <= k; i++) {
+    memoBailo[i] = new int[k + 1]();
+    memoNo[i] = new int[k + 1]();
+    for (int j = 0; j <= k; j++) {
       memoBailo[i][j] = -1;
       memoNo[i][j] = -1;
     }

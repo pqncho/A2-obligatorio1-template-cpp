@@ -146,3 +146,9 @@ El tema es pasarlo a tabulacion, porque cambian seis variables, entonces nos que
 
 - nos llego la nota del parcial profe lpm como sobrevivimos ahora??? :(
 - Justificando ordenes del ejercicio 7 vimos que nos quedaba O(n^2) porque chequeabamos cada elemento del primer array con todos los elementos del segundo array, nos quedaba (n/2)(n/2). Entonces lo que hicimos fue hacer mergeSort, ordenar los arrays, lo que hace que no tengamos que chequear cada elemento. como los subarrays que recibimos ya estan ordenados no tenemos que ir chequeando elemento por elemento.
+
+## 2026-11-17 - En conjunto
+
+El dia de hoy hicimos el tab del ejercicio 8, como no nos salio la super optimizacion decidimos hacer la vieja y confiable dimension 6.
+
+tambien hicimos las justificaciones del 7 , 8 y 9 que estaban pendientes.
