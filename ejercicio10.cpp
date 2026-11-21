@@ -84,8 +84,27 @@ bool puedoPodar(par* solCandidata, par* best, int cantP){
     return false; //si son iguales nos quedariamos con la nueva
 }
 
+bool columnasOk(string letras, int ixL, par* act, int cantP, int64_t* pow10){
+    for(int c = 0; c < 10; c++){
+        bool hayLetra = false;
+        for(int i = 0; i < cantP; i++){
+            int largo = act[i].word.length();
+            if(c < largo){
+                hayLetra = true;
+                
+                if((int)letras.find(act[i].word[largo - 1 - c]) >= ixL) return true;
+            }
+        }
+        if(!hayLetra) return true;
+        int64_t sum = 0;
+        for(int i = 0; i < cantP - 1; i++) sum += act[i].value;
+        if((sum - act[cantP - 1].value) % pow10[c + 1] != 0) return false; //Tendria carry out y no da.
+    }
+    return true;
+}
+
 void solveRiddle(string letras, int ixL, par* best, par* act, int cantP, bool* usados, int64_t* pow10){
-    if(puedoPodar(act, best, cantP)){
+    if(puedoPodar(act, best, cantP) || !columnasOk( letras, ixL, act, cantP, pow10)){
         return;
     }
     if(esSolucion(act, cantP, ixL == letras.length())){ //hacer la suma
@@ -115,8 +134,9 @@ int main(){
     for(int i = 1; i <= 10; i++) pow10[i] = pow10[i-1] * 10;
     for(int i = 0; i < t; i++){
         cin >> k;
-        string total;
+      
         string pal;
+        int max =0;
         par* pals = new par[k+1];
         par* best = new par[k+1];
         par* act = new par[k+1];
@@ -128,7 +148,8 @@ int main(){
             best[j].value = INT64_MAX;
             act[j].word = pal;
             act[j].value = 0;
-            total += pal; //orden opuesto
+            if(pal.length() > max) max = pal.length();
+            
         }
         cin >> pal; //resultado
         pals[k].word = pal;
@@ -137,7 +158,17 @@ int main(){
         best[k].value = INT64_MAX;
         act[k].word = pal;
         act[k].value = 0;
-        total = pal + total;
+         if(pal.length() > max) max = pal.length();
+        string total = "";
+         // Lo armamos por unidades,decenas,centenas...
+        for(int i =0; i<max ; i++){
+            for(int j=0 ; j< k+1; j++){
+                if(i< act[j].word.length()){
+                    total += act[j].word[act[j].word.length() - i - 1];
+                }
+            }
+
+        }
         total = unaVez(total);
 
         
