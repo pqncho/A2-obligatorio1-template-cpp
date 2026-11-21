@@ -139,6 +139,8 @@ int main(){
         act[k].value = 0;
         total = pal + total;
         total = unaVez(total);
+
+        
         solveRiddle(total, 0, best, act, k+1,new bool[10](),pow10);//llamar backtracking con cantP = k+1
         //chequear si tenemos mas de una letra en la palabra
         bool es = true;
