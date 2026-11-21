@@ -1,17 +1,15 @@
 #include <cassert>
-#include <climits>
 #include <string>
 #include <iostream>
-#include <cmath> //achekear
+#include <cstdint>
 using namespace std;
 
 struct par {
     string word;
-    int value;
-    bool hayCero;
+    int64_t value;
+   
 };
 
-//hacer respuesta<par*, bool> para saber si esta o no
 
 string unaVez(string total){
     string res = "";
@@ -23,48 +21,50 @@ string unaVez(string total){
     return res;
 }
 
-bool esValido(string letras,int ixL, int digito, par* act, int cantP) {
+bool esValido(string letras,int ixL, int digito, par* act, int cantP, bool* usados) {
+    if(usados[digito]) return false;
     if(ixL >= letras.length()) return false;
     bool res = true;
+    
     if(digito == 0){
         for(int i= 0; i < cantP; i++){
-            if((act[i].word[0] == letras[ixL] && act[i].word.length() > 1) || act[i].hayCero) res = false;
-        }
-    }else{
-        for(int i = 0; i < cantP; i++){
-            if(to_string(act[i].value).find(to_string(digito)) != string::npos) res = false;
+            if((act[i].word[0] == letras[ixL] && act[i].word.length() > 1)) res = false;
         }
     }
+   
     return res;
 }
 
-par* agregar(par* palabras, char letra, int digito, int cantP){
+void agregar(par* palabras, char letra, int digito, int cantP, bool* usados,int64_t* pow10){
+    usados[digito] = true;
     for(int i = 0; i < cantP; i++){
         for(int j = 0; j < palabras[i].word.length(); j++){
             if(palabras[i].word[j] == letra) {
-                palabras[i].value+= digito*(pow(10,(palabras[i].word.length() - j - 1)));
-                if(digito == 0) palabras[i].hayCero = true;
+                palabras[i].value+= digito*(pow10[palabras[i].word.length() - j - 1]);
+                
             }
         }
     }
-    return palabras;
+    return;
 }
 
-par* quitar(par* palabras, char letra, int digito, int cantP){
+void quitar(par* palabras, char letra, int digito, int cantP, bool* usados,int64_t* pow10){
+    usados[digito] = false;
     for(int i = 0; i < cantP; i++){
         for(int j = 0; j < palabras[i].word.length(); j++){
             if(palabras[i].word[j] == letra) {
-                palabras[i].value-= digito*(pow(10,(palabras[i].word.length() - j - 1)));
-                if(digito == 0) palabras[i].hayCero = false; 
+
+                palabras[i].value-= digito*(pow10[palabras[i].word.length() - j - 1]);
+                
             }
         }
     } 
-    return palabras;
+    return;
 }
 
 bool esSolucion(par* solCandidata, int cantP, bool puedeSer){
     bool res = false;
-    int sum = 0;
+    int64_t sum = 0;
     for(int i = 0; i < cantP - 1; i++){
         sum+= solCandidata[i].value;
     }
@@ -73,27 +73,36 @@ bool esSolucion(par* solCandidata, int cantP, bool puedeSer){
 
 bool puedoPodar(par* solCandidata, par* best, int cantP){
     if(solCandidata[cantP - 1].value > best[cantP - 1].value) return true; //chequeamos resultado
-    for(int i = 0; i < cantP - 1; i++){//chequeamos en orden de sumandos
+    if(solCandidata[cantP - 1].value == best[cantP - 1].value){
+        int i=0;
+        while(i< cantP && solCandidata[i].value == best[i].value )i++;
+        if(i<cantP ){
         if(solCandidata[i].value > best[i].value) return true;
+
+        } 
     }
     return false; //si son iguales nos quedariamos con la nueva
 }
 
-par* solveRiddle(string letras, int ixL, par* best, par* act, int cantP){
+void solveRiddle(string letras, int ixL, par* best, par* act, int cantP, bool* usados, int64_t* pow10){
     if(puedoPodar(act, best, cantP)){
-        return best;
+        return;
     }
     if(esSolucion(act, cantP, ixL == letras.length())){ //hacer la suma
-      return act;
+        for(int i =0 ; i< cantP; i++){
+            best[i].value = act[i].value;
+
+        }
+      return;
     }
     for(int i = 0; i < 10; i++){
-        if(esValido(letras, ixL, i, act, cantP)){
-            act= agregar(act, letras[ixL], i, cantP);
-            best = solveRiddle(letras, ixL+1, best, act, cantP);
-            act= quitar(act, letras[ixL], i, cantP);
+        if(esValido(letras, ixL, i, act, cantP,usados)){
+            agregar(act, letras[ixL], i, cantP, usados, pow10);
+            solveRiddle(letras, ixL+1, best, act, cantP, usados,pow10);
+            quitar(act, letras[ixL], i, cantP, usados, pow10);
         }
     }
-    return best;
+    return;
 }
 
 
@@ -101,6 +110,9 @@ int main(){
     int t;
     cin >> t;
     int k;
+    int64_t pow10[11];
+    pow10[0] = 1;
+    for(int i = 1; i <= 10; i++) pow10[i] = pow10[i-1] * 10;
     for(int i = 0; i < t; i++){
         cin >> k;
         string total;
@@ -113,7 +125,7 @@ int main(){
             pals[j].word = pal;
             pals[j].value = 0;
             best[j].word = pal;
-            best[j].value = INT_MAX;
+            best[j].value = INT64_MAX;
             act[j].word = pal;
             act[j].value = 0;
             total += pal; //orden opuesto
@@ -122,22 +134,22 @@ int main(){
         pals[k].word = pal;
         pals[k].value = 0;
         best[k].word = pal;
-        best[k].value = INT_MAX;
+        best[k].value = INT64_MAX;
         act[k].word = pal;
         act[k].value = 0;
         total = pal + total;
         total = unaVez(total);
-        par* solucion = solveRiddle(total, 0, best, act, k+1);//lamar backtracking con cantP = k+1
+        solveRiddle(total, 0, best, act, k+1,new bool[10](),pow10);//llamar backtracking con cantP = k+1
         //chequear si tenemos mas de una letra en la palabra
         bool es = true;
         for(int i = 0; i< k+1; i++){
-            if(solucion[i].value == INT_MAX) es = false;
+            if(best[i].value == INT64_MAX) es = false;
         }
         if(es){
             for(int i = 0; i < k - 1; i++) {
-                cout << solucion[i].value << " + ";
+                cout << best[i].value << " + ";
             }
-            cout << solucion[k-1].value << " = " << solucion[k].value << endl; //este si endl
+            cout << best[k-1].value << " = " << best[k].value << endl; 
         }else{
             cout << "imposible" << endl;
         }
