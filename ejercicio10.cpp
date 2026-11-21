@@ -2,7 +2,7 @@
 #include <climits>
 #include <string>
 #include <iostream>
-
+#include <cmath> //achekear
 using namespace std;
 
 struct par {
@@ -23,11 +23,12 @@ string unaVez(string total){
     return res;
 }
 
-bool esValido(char letra, int digito, par* act, int cantP) {
+bool esValido(string letras,int ixL, int digito, par* act, int cantP) {
+    if(ixL >= letras.length()) return false;
     bool res = true;
     if(digito == 0){
-        for(int i= 0; i < cantP - 1; i++){
-            if((act[i].word[0] == letra && act[i].word.length() > 1) || act[i].hayCero) res = false;
+        for(int i= 0; i < cantP; i++){
+            if((act[i].word[0] == letras[ixL] && act[i].word.length() > 1) || act[i].hayCero) res = false;
         }
     }else{
         for(int i = 0; i < cantP; i++){
@@ -37,26 +38,28 @@ bool esValido(char letra, int digito, par* act, int cantP) {
     return res;
 }
 
-void agregar(par* palabras, char letra, int digito, int cantP){
+par* agregar(par* palabras, char letra, int digito, int cantP){
     for(int i = 0; i < cantP; i++){
         for(int j = 0; j < palabras[i].word.length(); j++){
             if(palabras[i].word[j] == letra) {
-                palabras[i].value+= digito*(10^(palabras[i].word.length() - j - 1));
+                palabras[i].value+= digito*(pow(10,(palabras[i].word.length() - j - 1)));
                 if(digito == 0) palabras[i].hayCero = true;
             }
         }
     }
+    return palabras;
 }
 
-void quitar(par* palabras, char letra, int digito, int cantP){
+par* quitar(par* palabras, char letra, int digito, int cantP){
     for(int i = 0; i < cantP; i++){
         for(int j = 0; j < palabras[i].word.length(); j++){
             if(palabras[i].word[j] == letra) {
-                palabras[i].value-= digito*(10^(palabras[i].word.length() - j - 1));
+                palabras[i].value-= digito*(pow(10,(palabras[i].word.length() - j - 1)));
                 if(digito == 0) palabras[i].hayCero = false; 
             }
         }
-    }
+    } 
+    return palabras;
 }
 
 bool esSolucion(par* solCandidata, int cantP, bool puedeSer){
@@ -80,14 +83,14 @@ par* solveRiddle(string letras, int ixL, par* best, par* act, int cantP){
     if(puedoPodar(act, best, cantP)){
         return best;
     }
-    if(esSolucion(act, cantP, ixL == cantP)){ //hacer la suma
+    if(esSolucion(act, cantP, ixL == letras.length())){ //hacer la suma
       return act;
     }
     for(int i = 0; i < 10; i++){
-        if(esValido(letras[ixL], i, act, cantP)){
-            agregar(act, letras[ixL], i, cantP);
+        if(esValido(letras, ixL, i, act, cantP)){
+            act= agregar(act, letras[ixL], i, cantP);
             best = solveRiddle(letras, ixL+1, best, act, cantP);
-            quitar(act, letras[ixL], i, cantP);
+            act= quitar(act, letras[ixL], i, cantP);
         }
     }
     return best;
@@ -132,7 +135,7 @@ int main(){
         }
         if(es){
             for(int i = 0; i < k - 1; i++) {
-                cout << solucion[i].value << " + " << endl;
+                cout << solucion[i].value << " + ";
             }
             cout << solucion[k-1].value << " = " << solucion[k].value << endl; //este si endl
         }else{
