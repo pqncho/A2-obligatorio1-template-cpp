@@ -19,9 +19,7 @@ si lo es sumamos 1 a las remontadas epicas.
 
 Para el 9, (no queriamos estresarnos con el 8 asi que metimos doble salto), primero hicimos la version recursiva en la que llevamos cuenta del indice en el que vamos para los array de likes y goles, ademas dos variables golA y golB para chequear si podiamos bailar o quedabamos perdiendo.
 
-Para pasarlo a memo si lo haciamos manteniendo golesA y golesB no nos daban las dimensiones de la matriz, pero lo que nos importa es saber si estamos empatados o por cuanto vamos ganando. Entonces lo pensamos como el problema de los parentesis (sumando 1 cuando abre un parentesis y restando 1 cuando cierran) manteniendo una variable que le sumamos 1 cuando hay gol de A y le restamos 1 por cada gol de B. Cuando el contador vale 0 estamos empatados y sino es la ventaja de goles que llevamos. Entonces tenemos una sola variable para el contador y podemos hacer la matriz de indices in y contador.
-
-Para cada ronda tenemos dos valores segun si bailo o no, Entonces dijimos de mantener dos matrices separadas para poder cumplir con el orden espacial k.k Y con la variable bailo vamos viendo que matriz consultar.
+Para pasarlo a memo si lo haciamos manteniendo golesA y golesB no nos daban las dimensiones de la matriz, pero lo que nos importa es saber si estamos empatados o por cuanto vamos ganando. Entonces lo pensamos como el problema de los parentesis (sumando 1 cuando abre un parentesis y restando 1 cuando cierran) manteniendo una variable que le sumamos 1 cuando hay gol de A y le restamos 1 por cada gol de B. Cuando el contador vale 0 estamos empatados y sino es la ventaja de goles que llevamos. Para cada ronda tenemos dos valores segun si bailo o no, entonces le agregamos otra dimension a la matriz que igual es tamaño constante 2. Por las dudas le preguntamos a Claude si teniendo algo de `[k][k][2]` igualmente cumpliamos los ordenes K cuadrado aunque quede dimension 3 y nos dijo que si.
 
 ## 2026-11-8 - En conjunto
 
@@ -32,7 +30,7 @@ El tema es pasarlo a tabulacion, porque cambian seis variables, entonces nos que
 
 ## 2026-11-10 - En conjunto
 
-- nos llego la nota del parcial profe lpm como sobrevivimos ahora??? :(
+- nos llego la nota del parcial profe help como sobrevivimos ahora??? :(
 - Justificando ordenes del ejercicio 7 vimos que nos quedaba O(n^2) porque chequeabamos cada elemento del primer array con todos los elementos del segundo array, nos quedaba (n/2)(n/2). Entonces lo que hicimos fue hacer mergeSort, ordenar los arrays, lo que hace que no tengamos que chequear cada elemento. como los subarrays que recibimos ya estan ordenados no tenemos que ir chequeando elemento por elemento.
 
 ## 2026-11-17 - En conjunto

@@ -24,9 +24,9 @@ Orden espacial O(N⋅W⋅L0⋅L1⋅L2⋅L3): creamos una estructura de 6 dimensi
 ## Ejercicio 9
 
 Orden temporal O(K^2):
-Si bien hay máximos de dos recursiones en muchos casos este valor ya va a estar calculado, entonces simplemente es devolver ese valor que se encuentra en la matriz memo en O(1). igualmente el indice va de 0 hasta k, el contador tambien y tenemos dos opciones de si bailo o no bailo, al pasar por todas las opciones posibles nos queda k.k.2 que seria O(k.k).
+Si bien hay máximos de dos recursiones en muchos casos este valor ya va a estar calculado, entonces simplemente es devolver ese valor que se encuentra en la matriz memo en O(1). Igualmente el indice va de 0 hasta k, el contador también y tenemos dos opciones de si bailo o no bailo, al pasar por todas las opciones posibles nos queda k.k.2 que seria O(K^2).
 
-Orden espacial O(K^2): Como creamos dos matrices de dimensiones K.K dado que como mucho vamos a estar K goles arriba en el contador, y los arrays de likes y goles son de tamaño K, entonces es 2K^2 + 2K que es O(K^2);
+Orden espacial O(K^2): Si bien tenemos un memoPato de tres dimensiones, la tercera se mantiene constante en 2, las otras dos si son K y representan el ínidce y el contador de los goles. Como siempre creamos la matriz con la última dimensión de tamaño 2, es constante y nos queda el orden espacial 2.K.K que seria O(K^2).
 
 ## Ejercicio 10
 
