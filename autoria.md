@@ -8,7 +8,7 @@ Implementación íntegramente propia, solución discutida en clase con otros equ
 
 ## Ejercicio 7
 
-Implementación íntegramente propia, solución discutida en clase con otros equipos.
+Implementación propia, solución discutida en clase con otros equipos. Utilizamos el código de merge sort para C++ de [GeeksforGeeks](https://www.geeksforgeeks.org/dsa/merge-sort/)
 
 ## Ejercicio 8
 
@@ -19,5 +19,5 @@ Implementación íntegramente propia.
 Implementación íntegramente propia, solución discutida en clase con otros equipos.
 
 ## Ejercicio 10
-La resolución del ejercicio como tal fue íntegramente propia. 
-Cuando corrimos go y vimos que teníamos que bajar los tiempos de ejecución a menos de 30s porque con esto es que lo corrige el profe, no se nos ocurria otra optimización sin tener que volver a pensar como resolver el ejercicio, pero no queríamos hacer eso porque ya estaba dando los resultados correctos, entonces le pedimos a Claude que nos diera una pista de otra optimización, explicándole que nuestra poda iba considerando resultados que estuvieran dando números mayores que los de la mejor solución, y de ahí fue que sacamos lo de chequear por columnas.
+
+La solución del ejercicio como tal fue completamente propia, incluso compilando con -O2 los tiempos daban menos de 40s, pero sin la flag no daban los casos más grandes en menos de un minuto, así que le pedimos a Claude otra poda además de la que estábamos usando, y fue ahí que reordenamos por columnas y armamos la función verColumnas. En la función Claude también nos ayudó con el cálculo sum - act[cantP - 1].value % pow10[c + 1] != 0. 

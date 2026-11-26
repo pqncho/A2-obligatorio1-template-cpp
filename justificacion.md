@@ -30,4 +30,4 @@ Orden espacial O(K^2): Si bien tenemos un memoPato de tres dimensiones, la terce
 
 ## Ejercicio 10
 
-Sin restricción de ordenes, cada test igualmente tarda menos de 30s.
+Sin restricción de ordenes.

@@ -11,7 +11,7 @@ struct par {
 };
 
 
-string unaVez(string total){
+string unaVez(const string& total){
     string res = "";
     for(int i = 0; i < total.length(); i++){
         if(res.find(total[i]) == string::npos){
@@ -84,7 +84,7 @@ bool puedoPodar(par* solCandidata, par* best, int cantP){
     return false; //si son iguales nos quedariamos con la nueva
 }
 
-bool verColumnas(string letras, int ixL, par* act, int cantP, int64_t* pow10){
+bool verColumnas(const string& letras, int ixL, par* act, int cantP, int64_t* pow10){
     for(int c = 0; c < 10; c++){
         bool hay = false;
         for(int i = 0; i < cantP; i++){
@@ -102,7 +102,7 @@ bool verColumnas(string letras, int ixL, par* act, int cantP, int64_t* pow10){
     return true;
 }
 
-void solveRiddle(string letras, int ixL, par* best, par* act, int cantP, bool* usados, int64_t* pow10){
+void solveRiddle(const string& letras, int ixL, par* best, par* act, int cantP, bool* usados, int64_t* pow10){
     if(puedoPodar(act, best, cantP) || !verColumnas( letras, ixL, act, cantP, pow10)){
         return;
     }
